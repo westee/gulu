@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/westee/gulu/issues"
   },
-  "homepage": "https://github.com/westee/gulu#readme"
+  "homepage": "https://github.com/westee/gulu#readme",
+  "dependencies": {
+    "vue": "^2.6.6"
+  }
 }
