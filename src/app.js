@@ -7,4 +7,9 @@ Vue.component('g-button', Button)
 
 new Vue({
     el: '#app',
+    data:{
+        loadingFlag1: false,
+        loadingFlag2: false,
+        loadingFlag3: false,
+    }
 })

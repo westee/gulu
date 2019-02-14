@@ -1,9 +1,10 @@
 <template>
-    <button class="g-button" :class="iconPosition">
+    <button class="g-button" :class="iconPosition" @click="$emit('click')">
         <!--<svg class="icon" v-if="icon" >-->
             <!--<use :xlink:href="`#icon-${icon}`"></use>-->
         <!--</svg>-->
-        <g-icon v-if="icon" class="icon" :name="icon"></g-icon>
+        <g-icon v-if="icon && !loading" class="icon" :name="icon"></g-icon>
+        <g-icon name="loading" v-if="loading" class="loading icon"></g-icon>
         <span class="content">
             <slot name="text"></slot>
         </span>
@@ -15,14 +16,17 @@
         // props: ['icon','iconPosition']
         props:{
             icon: {},
+            loading:{
+                type: Boolean,
+                default: false
+            },
             iconPosition: {
                 type: String,
                 default: 'left',
                 validator: function(value){
                     return !(value !== 'left' && value !== 'right');
                 }
-            },
-
+            }
         }
     }
 </script>
@@ -53,6 +57,13 @@
 
         &:focus {
             outline: none
+        }
+        @keyframes spin {
+            from{ transform: rotate(0deg) }
+            to{ transform: rotate(360deg) }
+        }
+        .loading{
+            animation: spin 2s infinite linear;
         }
     }
 </style>

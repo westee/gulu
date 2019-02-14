@@ -35,19 +35,25 @@
 </head>
 <body>
 <div id="app">
-    <g-button icon="setting">
+    <g-button icon="setting" :loading="loadingFlag1 " @click="loadingFlag1  = !loadingFlag1 ">
         <template slot="text">
             设置
         </template>
     </g-button>
 
-    <g-button icon="download" icon-position="right">
+    <g-button icon="download" icon-position="right" :loading="loadingFlag2" @click="loadingFlag2 = !loadingFlag2">
         <template slot="text">
             向右
         </template>
     </g-button>
 
-    <g-button  icon-position="right">
+    <g-button  icon-position="right" :loading="true">
+        <template slot="text">
+            按钮
+        </template>
+    </g-button>
+
+    <g-button  :loading="true" icon-position="left" >
         <template slot="text">
             按钮
         </template>
