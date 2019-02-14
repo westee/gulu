@@ -5,10 +5,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>按钮</title>
     <style>
-        * {margin:0;padding:0; box-sizing: border-box;}
-        :root{
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
             --button-height: 32px;
             --font-size: 14px;
             --button-bg: white;
@@ -19,17 +24,48 @@
             --border-cover-hover: #666;
         }
 
-        #app{margin: 20px;}
+        #app {
+            margin: 20px;
+        }
 
-        body{font-size: var(--font-size);}
+        body {
+            font-size: var(--font-size);
+        }
     </style>
-
+    <style type="text/css">
+        .icon {
+            width: 1em;
+            height: 1em;
+            /*vertical-align: -0.15em;*/
+            fill: currentColor;
+            margin-top: 0.15em;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-    <div id="app">
-        <g-button></g-button>
-    </div>
+<div id="app">
+    <g-button icon="setting">
+        <template slot="text">
+            设置
+        </template>
+    </g-button>
 
-    <script src="./src/app.js"></script>
+    <g-button icon="download" icon-position="right">
+        <template slot="text">
+            向右
+        </template>
+    </g-button>
+
+    <g-button  icon-position="right">
+        <template slot="text">
+            按钮
+        </template>
+    </g-button>
+
+</div>
+
+<script src="./src/app.js"></script>
+<script src="//at.alicdn.com/t/font_963473_v7owchjc7o.js"></script>
 </body>
 </html>
