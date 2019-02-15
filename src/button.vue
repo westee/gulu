@@ -3,8 +3,8 @@
         <!--<svg class="icon" v-if="icon" >-->
             <!--<use :xlink:href="`#icon-${icon}`"></use>-->
         <!--</svg>-->
-        <g-icon v-if="icon && !loading" class="icon" :name="icon"></g-icon>
-        <g-icon name="loading" v-if="loading" class="loading icon"></g-icon>
+        <g-icon v-if="icon && !loading"  :name="icon"></g-icon>
+        <g-icon name="loading" v-if="loading" class="loading"></g-icon>
         <span class="content">
             <!--<slot name="text"></slot>-->
             <slot></slot>
@@ -44,6 +44,8 @@
         border-radius: var(--border-radius);
         border: 1px solid var(--border-color);
         background: var(--button-bg);
+        .content{order:2}
+        .icon{order:1}
         &.right{
             .content{order: 1}
             .icon{order: 2}

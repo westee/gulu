@@ -11,7 +11,6 @@
         mounted() {
             // console.log(this.$el.children)
             for(let node of this.$el.children){
-                console.log(node.nodeName)
                 if(node.nodeName !== 'BUTTON'){
                     console.error('老兄,g-button-group的子元素应该全是button')
                 }
