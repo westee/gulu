@@ -6,7 +6,8 @@
         <g-icon v-if="icon && !loading" class="icon" :name="icon"></g-icon>
         <g-icon name="loading" v-if="loading" class="loading icon"></g-icon>
         <span class="content">
-            <slot name="text"></slot>
+            <!--<slot name="text"></slot>-->
+            <slot></slot>
         </span>
     </button>
 </template>

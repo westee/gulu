@@ -36,28 +36,30 @@
 <body>
 <div id="app">
     <g-button icon="setting" :loading="loadingFlag1 " @click="loadingFlag1  = !loadingFlag1 ">
-        <template slot="text">
+        <!--<template slot="text">-->
             设置
-        </template>
+        <!--</template>-->
     </g-button>
 
     <g-button icon="download" icon-position="right" :loading="loadingFlag2" @click="loadingFlag2 = !loadingFlag2">
-        <template slot="text">
             向右
-        </template>
     </g-button>
 
-    <g-button  icon-position="right" :loading="true">
-        <template slot="text">
+    <g-button  icon-position="right" :loading="loadingFlag3" @click="loadingFlag3 = !loadingFlag3">
             按钮
-        </template>
     </g-button>
 
     <g-button  :loading="true" icon-position="left" >
-        <template slot="text">
             按钮
-        </template>
-    </g-button>
+        </g-button>
+
+    <g-button-group>
+     <!--<div>&lt;!&ndash;&ndash;&gt;-->
+         <g-button icon="left">上一页</g-button>
+     <!--</div>-->
+        <g-button>更多</g-button>
+        <g-button icon="right">下一页</g-button>
+    </g-button-group>
 
 </div>
 
