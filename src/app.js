@@ -3,6 +3,8 @@ import Button from './button'
 import Icon from './icon'
 import ButtonGroup from './button-group'
 import Chai from 'chai'
+import ChaiSpies from 'chai-spies'
+Chai.use(ChaiSpies)
 
 Vue.component('g-icon', Icon)
 Vue.component('g-button', Button)
@@ -72,6 +74,24 @@ new Vue({
     let svg = btn.$el.querySelector('svg')
     let {order} = window.getComputedStyle(svg)
     expect(order).to.equal('2');
+    btn.$el.remove()
+    btn.$destroy()
+}
+
+//test click
+{
+    const constructor = Vue.extend(Button)
+    const btn = new constructor({
+        propsData:{
+            icon: 'zan',
+            loading: true
+        }
+    }).$mount()
+    let spy = Chai.spy(function(){})
+    btn.$on('click', spy)
+    console.dir(btn.$el)
+    btn.$el.click()
+    expect(spy).to.have.been.called();
     btn.$el.remove()
     btn.$destroy()
 }
