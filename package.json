@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/westee/gulu#readme",
   "dependencies": {
+    "cha": "^0.2.1",
     "vue": "^2.6.6",
     "vue-hot-reload-api": "^2.3.2"
   },
