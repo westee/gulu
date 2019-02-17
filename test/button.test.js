@@ -13,11 +13,11 @@
             const Constructor = Vue.extend(Button)
             const vm = new Constructor({
                 propsData: {
-                    icon: 'settings'
+                    icon: 'setting'
                 }
             }).$mount()
             const useElement = vm.$el.querySelector('use')
-            expect(useElement.getAttribute('xlink:href')).to.equal('#icon-settings')
+            expect(useElement.getAttribute('xlink:href')).to.equal('#icon-setting')
             vm.$destroy()
         })
         it('可以设置loading.', () => {
@@ -53,7 +53,7 @@
             const Constructor = Vue.extend(Button)
             const vm = new Constructor({
                 propsData: {
-                    icon: 'settings',
+                    icon: 'zan',
                     iconPosition: 'right'
                 }
             }).$mount(div)
@@ -66,7 +66,7 @@
             const Constructor = Vue.extend(Button)
             const vm = new Constructor({
                 propsData: {
-                    icon: 'settings',
+                    icon: 'setting',
                 }
             }).$mount()
 

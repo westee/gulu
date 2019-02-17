@@ -89,7 +89,6 @@ new Vue({
     }).$mount()
     let spy = Chai.spy(function(){})
     btn.$on('click', spy)
-    console.dir(btn.$el)
     btn.$el.click()
     expect(spy).to.have.been.called();
     btn.$el.remove()
