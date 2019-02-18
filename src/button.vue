@@ -19,6 +19,7 @@
 
     export default {
         // props: ['icon','iconPosition']
+        name: 'g-button',
         components:{ //局部注册
             'g-icon': Icon
         },
