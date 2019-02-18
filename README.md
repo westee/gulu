@@ -1,6 +1,6 @@
 # gulu
 [![Build Status](https://travis-ci.com/westee/gulu.svg?branch=master)](https://travis-ci.com/westee/gulu)
-
+[![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
 ## 介绍
 
 ## 开始使用
