@@ -35,31 +35,38 @@
 </head>
 <body>
 <div id="app">
-    <g-button icon="setting" :loading="loadingFlag1 " @click="loadingFlag1  = !loadingFlag1 ">
-        <!--<template slot="text">-->
+    <g-input input-placeholder="普通"></g-input>
+    <g-input input-placeholder="禁用" input-disabled></g-input>
+    <g-input input-placeholder="只读" readonly></g-input>
+    <g-input input-placeholder="提示" error="错误提示"></g-input>
+    <div>
+        <g-button icon="setting" :loading="loadingFlag1 " @click="loadingFlag1  = !loadingFlag1 ">
+            <!--<template slot="text">-->
             设置
-        <!--</template>-->
-    </g-button>
+            <!--</template>-->
+        </g-button>
 
-    <g-button icon="download" icon-position="right" :loading="loadingFlag2" @click="loadingFlag2 = !loadingFlag2">
+        <g-button icon="download" icon-position="right" :loading="loadingFlag2" @click="loadingFlag2 = !loadingFlag2">
             向右
-    </g-button>
+        </g-button>
 
-    <g-button  icon-position="right" :loading="loadingFlag3" @click="loadingFlag3 = !loadingFlag3">
-            按钮
-    </g-button>
-
-    <g-button  :loading="true" icon-position="left" >
+        <g-button icon-position="right" :loading="loadingFlag3" @click="loadingFlag3 = !loadingFlag3">
             按钮
         </g-button>
 
-    <g-button-group>
-     <!--<div>&lt;!&ndash;&ndash;&gt;-->
-         <g-button icon="left">上一页</g-button>
-     <!--</div>-->
-        <g-button>更多</g-button>
-        <g-button icon="right" icon-position="right">下一页</g-button>
-    </g-button-group>
+        <g-button :loading="true" icon-position="left">
+            按钮
+        </g-button>
+
+        <g-button-group>
+            <!--<div>&lt;!&ndash;&ndash;&gt;-->
+            <g-button icon="left">上一页</g-button>
+            <!--</div>-->
+            <g-button>更多</g-button>
+            <g-button icon="right" icon-position="right">下一页</g-button>
+        </g-button-group>
+    </div>
+
     <div id="test"></div>
 </div>
 
