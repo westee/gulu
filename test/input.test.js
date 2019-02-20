@@ -58,7 +58,60 @@ describe('Input', () => {
             expect(errorElement.innerHTML).to.equal('错误信息')
         })
     })
+
+    /**
+     * 函数测试
+     */
     describe('事件',()=>{
+        let vm
+        afterEach(()=>{
+            vm.$destroy()
+        })
+        let eventNameArray = ['change','blur','focus','input']
+        eventNameArray.forEach((value)=>{
+            it(`可以${value}`, () => {
+
+                vm = new Constructor({}).$mount()
+                let callback = sinon.fake();
+                vm.$on(value,callback)
+                let event = new Event(value)
+                let inputElement = vm.$el.querySelector('input')
+                inputElement.dispatchEvent(event)
+                expect(callback).to.have.been.calledWith(event)
+            })
+        })
+
+
+        // it('可以blur', () => {
+        //     vm = new Constructor({}).$mount()
+        //     let callback = sinon.fake();
+        //     vm.$on('blur',callback)
+        //     let event = new Event('blur')
+        //     let inputElement = vm.$el.querySelector('input')
+        //     inputElement.dispatchEvent(event)
+        //     expect(callback).to.have.been.calledWith(event)
+        // })
+        //
+        // it('可以focus', () => {
+        //     vm = new Constructor({}).$mount()
+        //     let callback = sinon.fake();
+        //     vm.$on('focus',callback)
+        //     let event = new Event('focus')
+        //     let inputElement = vm.$el.querySelector('input')
+        //     inputElement.dispatchEvent(event)
+        //     expect(callback).to.have.been.calledWith(event)
+        // })
+        //
+        // it('可以input', () => {
+        //     vm = new Constructor({}).$mount()
+        //     let callback = sinon.fake();
+        //     vm.$on('input',callback)
+        //     let event = new Event('input')
+        //     let inputElement = vm.$el.querySelector('input')
+        //     inputElement.dispatchEvent(event)
+        //     expect(callback).to.have.been.calledWith(event)
+        // })
+
 
     })
 

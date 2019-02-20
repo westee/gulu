@@ -3,8 +3,8 @@
         {{ readonly }}
         <input :value="inputValue" :disabled="disabled" v-bind:readonly=readonly
                v-on:change="$emit('change', $event)" type="text"
-               v-on:blur="$emit('change', $event)"
-               v-on:input="$emit('change', $event)" v-on:focus="$emit('change', $event)">
+               v-on:blur="$emit('blur', $event)"
+               v-on:input="$emit('input', $event)" v-on:focus="$emit('focus', $event)">
         <!--浏览器原生对象$event -->
         <template>
             <Icon name="warn" v-if="error"></Icon>
