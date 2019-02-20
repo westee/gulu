@@ -75,42 +75,16 @@ describe('Input', () => {
                 let callback = sinon.fake();
                 vm.$on(value,callback)
                 let event = new Event(value)
+                Object.defineProperty(
+                    event, 'target',{
+                        value:{value:'hi'}, enumerable: true
+                    }
+                )
                 let inputElement = vm.$el.querySelector('input')
                 inputElement.dispatchEvent(event)
-                expect(callback).to.have.been.calledWith(event)
+                expect(callback).to.have.been.calledWith('hi')
             })
         })
-
-
-        // it('可以blur', () => {
-        //     vm = new Constructor({}).$mount()
-        //     let callback = sinon.fake();
-        //     vm.$on('blur',callback)
-        //     let event = new Event('blur')
-        //     let inputElement = vm.$el.querySelector('input')
-        //     inputElement.dispatchEvent(event)
-        //     expect(callback).to.have.been.calledWith(event)
-        // })
-        //
-        // it('可以focus', () => {
-        //     vm = new Constructor({}).$mount()
-        //     let callback = sinon.fake();
-        //     vm.$on('focus',callback)
-        //     let event = new Event('focus')
-        //     let inputElement = vm.$el.querySelector('input')
-        //     inputElement.dispatchEvent(event)
-        //     expect(callback).to.have.been.calledWith(event)
-        // })
-        //
-        // it('可以input', () => {
-        //     vm = new Constructor({}).$mount()
-        //     let callback = sinon.fake();
-        //     vm.$on('input',callback)
-        //     let event = new Event('input')
-        //     let inputElement = vm.$el.querySelector('input')
-        //     inputElement.dispatchEvent(event)
-        //     expect(callback).to.have.been.calledWith(event)
-        // })
 
 
     })
