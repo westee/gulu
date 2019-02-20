@@ -1,6 +1,11 @@
 <template>
     <div :class="{'wrapper': true,'error': error} ">
-        <input :value="inputPlaceholder" :disabled="inputDisabled" :readonly="readonly" type="text">
+        {{ readonly }}
+        <input :value="inputValue" :disabled="disabled" v-bind:readonly=readonly
+               v-on:change="$emit('change', $event)" type="text"
+               v-on:blur="$emit('change', $event)"
+               v-on:input="$emit('change', $event)" v-on:focus="$emit('change', $event)">
+        <!--浏览器原生对象$event -->
         <template>
             <Icon name="warn" v-if="error"></Icon>
             <span class="message">{{ error }}</span>
@@ -11,28 +16,30 @@
 </template>
 
 <script>
-    import  Icon from './icon'
+    import Icon from './icon'
+
     export default {
         name: 'g-input',
-        components:{
-          'Icon': Icon
+        components: {
+            'Icon': Icon
         },
         props: {
-            inputPlaceholder: {
+            inputValue: {
                 type: String,
             },
-            inputDisabled: {
+            disabled: {
                 type: Boolean,
                 default: false
             },
-            readonly:{
+            readonly: {
                 type: Boolean,
                 default: false
             },
-            error:{
+            error: {
                 type: String
             }
-        }
+        },
+        methods: {}
     }
 </script>
 
@@ -43,7 +50,9 @@
     $border-radius: 4px;
     $red: #f14530;
     .wrapper {
-        display: inline-flex;align-items: center;
+        display: inline-flex;
+        align-items: center;
+
         > input {
             padding: 9px 8px;
             height: $height;
@@ -58,33 +67,38 @@
                 box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
                 outline: none;
             }
+
             /*&:disabled {*/
-                /*outline: #333;*/
-                /*border-color: #aaa;*/
-                /*color: #ccc;*/
+            /*outline: #333;*/
+            /*border-color: #aaa;*/
+            /*color: #ccc;*/
             /*}*/
-            &[disabled]{
+            &[disabled],&[readonly] {
                 border-color: #aaa;
                 color: #ccc;
                 cursor: not-allowed;
             }
 
         }
-        &.error{
-            :not(:last-child){
+
+        &.error {
+            :not(:last-child) {
                 margin-right: 0.5em;
             }
-            > input{
+
+            > input {
                 border-color: $red;
                 outline: $red;
                 box-shadow: none;
             }
-            .message{
+
+            .message {
                 color: $red;
             }
         }
-        .icon{
-            color:$red;
+
+        .icon {
+            color: $red;
         }
     }
 </style>

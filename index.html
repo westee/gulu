@@ -35,10 +35,12 @@
 </head>
 <body>
 <div id="app">
-    <g-input input-placeholder="普通"></g-input>
-    <g-input input-placeholder="禁用" input-disabled></g-input>
-    <g-input input-placeholder="只读" readonly></g-input>
-    <g-input input-placeholder="提示" error="错误提示"></g-input>
+    <g-input input-value="普通"></g-input>
+    <g-input input-value="禁用" disabled></g-input>
+    <g-input input-value="只读" v-bind:readonly="true"></g-input>
+    <g-input input-value="只读" v-bind:readonly="false"></g-input>
+    <g-input input-value="提示" error="错误提示"></g-input>
+    <g-input input-value="@change" v-on:change="inputChange"></g-input>
     <div>
         <g-button icon="setting" :loading="loadingFlag1 " @click="loadingFlag1  = !loadingFlag1 ">
             <!--<template slot="text">-->
