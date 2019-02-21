@@ -35,9 +35,9 @@ module.exports = function (config) {
         reporters: ['mocha'],
         mochaReporter: {
             colors: {
-                success: 'blue',
-                info: 'green',
-                warning: 'cyan',
+                success: 'green',
+                info: 'yellow',
+                warning: 'purple',
                 error: 'red'
             },
             symbols: {

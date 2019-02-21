@@ -25,13 +25,13 @@ new Vue({
     created(){
       setTimeout(()=>{
           this.msg = 159487
-          console.log(111)
       },1000)
     },
     methods: {
         inputChange(e) {
             console.log(1, e.target.value)
-        }
+            this.$emit('change',e.target.value)
+        },
     }
 })
 
