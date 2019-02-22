@@ -1,10 +1,6 @@
 <template>
-    <div class="col" :class="[col && `col-${col}`,offset && `offset-${offset}`]"
-         :style="{paddingLeft: gutter/2 + 'px', paddingRight: gutter/2 + 'px'}"
-    >
-        <div style="border: 1px solid green; height: 100px;">
+    <div class="col" :class="colClass" :style="colStyle">
             <slot></slot>
-        </div>
     </div>
 </template>
 
@@ -25,12 +21,20 @@
                 gutter: 0
             }
         },
-        created() {
-            console.log('col created');
+        computed:{
+            //col--列的class
+            colClass(){
+                let {col, offset} = this
+                return [ col && `col-${col}`,offset && `offset-${offset}`]
+            },
+            // col--列的行内样式
+            colStyle(){
+                let {gutter }=  this
+                return {paddingLeft: gutter/2 + 'px', paddingRight: gutter/2 + 'px'}
+            }
         },
-        mounted() {
-            console.log('col mounted');
-        },
+        created() {},
+        mounted() {},
     }
 </script>
 
@@ -38,8 +42,6 @@
     .col {
         height: 100px;
         width: 50%;
-        /*border: 1px solid pink;*/
-        /*background: cyan;*/
         @for $i from 1 through 24 {
             &.col-#{$i} {
                 width: $i / 24 *100%;
