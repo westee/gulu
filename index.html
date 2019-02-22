@@ -72,8 +72,18 @@
             <g-button icon="right" icon-position="right">下一页</g-button>
         </g-button-group>
     </div>
-
-    <div id="test"></div>
+    <div>
+        <g-row>
+            <g-col :col="2" :offset="2">222</g-col>
+            <g-col :col="20">333</g-col>
+        </g-row>
+    </div>
+    <div>
+        <g-row :gutter="40">
+            <g-col :offset="2">222</g-col>
+            <g-col>333</g-col>
+        </g-row>
+    </div>
 </div>
 
 <script src="./src/app.js"></script>
