@@ -19,7 +19,7 @@ describe('Input', () => {
         it('可以设置inputValue.', () => {
              vm = new Constructor({
                 propsData: {
-                    inputValue: '错误'
+                    value: '错误'
                 }
             }).$mount()
             const inputElement = vm.$el.querySelector('input')
@@ -64,17 +64,16 @@ describe('Input', () => {
      */
     describe('事件',()=>{
         let vm
-        afterEach(()=>{
-            vm.$destroy()
-        })
+        // afterEach(()=>{
+        //     vm.$destroy()
+        // })
         let eventNameArray = ['change','blur','focus','input']
-        eventNameArray.forEach((value)=>{
-            it(`可以${value}`, () => {
-
+        eventNameArray.forEach((eventName)=>{
+            it(`可以${eventName}`, () => {
                 vm = new Constructor({}).$mount()
                 let callback = sinon.fake();
-                vm.$on(value,callback)
-                let event = new Event(value)
+                vm.$on(eventName,callback)
+                let event = new Event(eventName)
                 Object.defineProperty(
                     event, 'target',{
                         value:{value:'hi'}, enumerable: true
@@ -82,8 +81,9 @@ describe('Input', () => {
                 )
                 let inputElement = vm.$el.querySelector('input')
                 inputElement.dispatchEvent(event)
-                console.log(event)
                 expect(callback).to.have.been.calledWith('hi')
+                vm.$destroy()
+
             })
         })
 

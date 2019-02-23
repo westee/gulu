@@ -1,9 +1,9 @@
 <template>
     <div :class="{'wrapper': true,'error': error} ">
-        <input :value="inputValue" :disabled="disabled" v-bind:readonly="readonly"
-               v-on:change="$emit('change', $event.currentTarget.value)" type="text"
-               v-on:blur="$emit('blur', $event.currentTarget.value  )"
-               v-on:input="$emit('input', $event.currentTarget.value)" v-on:focus="$emit('focus', $event.currentTarget.value)">
+        <input :value="value" :disabled="disabled" v-bind:readonly="readonly"
+               v-on:change="$emit('change', $event.target.value)" type="text"
+               v-on:blur="$emit('blur', $event.target.value  )"
+               v-on:input="$emit('input', $event.target.value)" v-on:focus="$emit('focus', $event.target.value)">
         <!--浏览器原生对象$event -->
         <template>
             <Icon name="warn" v-if="error"></Icon>
@@ -22,12 +22,13 @@
         components: {
             'Icon': Icon
         },
-        model: {
-            prop: 'inputValue',
-            event: 'input'
-        },
+        // model: {
+        //     prop: 'inputValue',
+        //     event: 'input'
+        // },
         props: {
-            inputValue: {
+            value: {
+                type: [String, Number]
             },
             disabled: {
                 type: Boolean,
