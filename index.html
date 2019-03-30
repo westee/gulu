@@ -37,7 +37,7 @@
             width: 100%;
         }
         .demobox {
-            background: grey;
+            background: cyan;
             border: 1px solid red;
             min-height: 50px;
 
@@ -57,15 +57,25 @@
 <div id="app">
     <div>
         <g-row class=" topbar">
-            <g-col class="demobox" col="9">
-                <g-row align="left">
+            <g-col class="demobox" col="9" 
+            :phone="{col:2}"
+            :pad="{col:6}"
+            :narrow-pc="{col:10}"
+            :pc="{col:14}"
+            :big-pc="{col:18}">
+                <g-row align="left"  gutter="00">
                     <g-col>1</g-col>
                     <g-col>2</g-col>
                     <g-col>3</g-col>
                     <g-col>4</g-col>
                 </g-row>
             </g-col>
-            <g-col class="demobox"  col="15">
+            <g-col class="demobox"  col="15"
+            :phone="{col:22}"
+            :pad="{col:18}"
+            :narrow-pc="{col:14}"
+            :pc="{col:10}"
+            :big-pc="{col:6}">
                 <g-row align="right">
                     <g-col>1</g-col>
                     <g-col>2</g-col>
