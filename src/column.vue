@@ -41,7 +41,7 @@ export default {
       validator
     },
     bigPc: {
-      type: Object,
+      type: Object
     }
   },
   data() {
@@ -90,9 +90,7 @@ export default {
       margin-right: $j / 24 * 100%;
     }
   }
-}
-@media (max-width: 576px) {
-  .col {
+  @media (max-width: 576px) {
     @for $i from 1 through 24 {
       &.col-phone-#{$i} {
         width: $i / 24 * 100%;
@@ -104,9 +102,7 @@ export default {
       }
     }
   }
-}
-@media (min-width: 577px) and (max-width: 768px) {
-  .col {
+  @media (min-width: 577px) {
     @for $i from 1 through 24 {
       &.col-pad-#{$i} {
         width: $i / 24 * 100%;
@@ -118,9 +114,7 @@ export default {
       }
     }
   }
-}
-@media (min-width: 769px) and (max-width: 992px) {
-  .col {
+  @media (min-width: 769px) {
     @for $i from 1 through 24 {
       &.col-narrow-pc-#{$i} {
         width: $i / 24 * 100%;
@@ -132,9 +126,7 @@ export default {
       }
     }
   }
-}
-@media (min-width: 993px) and (max-width: 1200px) {
-  .col {
+  @media (min-width: 993px) {
     @for $i from 1 through 24 {
       &.col-pc-#{$i} {
         width: $i / 24 * 100%;
@@ -146,9 +138,7 @@ export default {
       }
     }
   }
-}
-@media (min-width: 1201px) {
-  .col {
+  @media (min-width: 1201px) {
     @for $i from 1 through 24 {
       &.col-big-pc-#{$i} {
         width: $i / 24 * 100%;
