@@ -49,18 +49,32 @@ export default {
       gutter: 0
     };
   },
+  methods:{
+    createClass: function(type, typeStr = "") {
+        if (!type) {
+          return [];
+        }
+        let arr = [];
+        if (type.col) {
+          arr.push(`col-${typeStr}-${type.col}`);
+        }
+        if (type.offset) {
+          arr.push(`offset-${typeStr}-${type.offset}`);
+        }
+        return arr
+      }
+  },
   computed: {
     //col--列的class
     colClass() {
       let { col, offset, phone, pad, narrowPc, pc, bigPc } = this;
       return [
-        col && `col-${col}`,
-        offset && `offset-${offset}`,
-        phone && `col-phone-${phone.col}`,
-        pad && `col-pad-${pad.col}`,
-        narrowPc && `col-narrowPc-${narrowPc.col}`,
-        pc && `col-pc-${pc.col}`,
-        bigPc && `col-bigPc-${bigPc.col}`
+        ...this.createClass(col, offset),
+        ...this.createClass(phone, 'phone'),
+        ...this.createClass(pad, 'pad'),
+        ...this.createClass(narrowPc, 'narrowPc'),
+        ...this.createClass(pc, 'pc'),
+        ...this.createClass(bigPc, 'bigPc'),
       ];
     },
     // col--列的行内样式

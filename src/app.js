@@ -5,7 +5,7 @@ import Icon from './icon'
 import ButtonGroup from './button-group'
 import Input from './input'
 import Row from './row'
-import  Col from './column'
+import Col from './column'
 
 import Chai from 'chai'
 import ChaiSpies from 'chai-spies'
