@@ -18,11 +18,7 @@ let validator = value => {
 export default {
   name: "g-col",
   props: {
-    col: {
-      // type: [String, Number]
-      type: Object
-    },
-    offset: {
+    coloffset: {
       // type: [String, Number]
       type: Object
     },
@@ -69,10 +65,9 @@ export default {
   computed: {
     //col--列的class
     colClass() {
-      let { col, offset, phone, pad, narrowPc, pc, bigPc } = this;
+      let { coloffset, phone, pad, narrowPc, pc, bigPc } = this;
       return [
-        ...this.createClass(col),
-        ...this.createClass(offset),
+        ...this.createClass(coloffset),
         ...this.createClass(phone, 'phone'),
         ...this.createClass(pad, 'pad'),
         ...this.createClass(narrowPc, 'narrowPc'),
