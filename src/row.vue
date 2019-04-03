@@ -14,6 +14,7 @@
             align:{
                 type: String,
                 validator(val){
+                    console.log(val)
                     return ['left','right','center'].includes(val)
                 }
             }

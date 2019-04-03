@@ -19,10 +19,12 @@ export default {
   name: "g-col",
   props: {
     col: {
-      type: [String, Number]
+      // type: [String, Number]
+      type: Object
     },
     offset: {
-      type: [String, Number]
+      // type: [String, Number]
+      type: Object
     },
     phone: {
       type: Object,
@@ -50,7 +52,7 @@ export default {
     };
   },
   methods:{
-    createClass: function(type, typeStr = "") {
+    createClass: function(type, typeStr = "default") {
         if (!type) {
           return [];
         }
@@ -69,7 +71,8 @@ export default {
     colClass() {
       let { col, offset, phone, pad, narrowPc, pc, bigPc } = this;
       return [
-        ...this.createClass(col, offset),
+        ...this.createClass(col),
+        ...this.createClass(offset),
         ...this.createClass(phone, 'phone'),
         ...this.createClass(pad, 'pad'),
         ...this.createClass(narrowPc, 'narrowPc'),
@@ -95,12 +98,12 @@ export default {
 .col {
   /*width: 50%;*/
   @for $i from 1 through 24 {
-    &.col-#{$i} {
+    &.col-default-#{$i} {
       width: $i / 24 * 100%;
     }
   }
   @for $j from 1 through 24 {
-    &.offset-#{$j} {
+    &.offset-default-#{$j} {
       margin-right: $j / 24 * 100%;
     }
   }
