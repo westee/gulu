@@ -26,7 +26,7 @@
         }
 
         #app {
-            margin: 20px;
+            /* margin: 20px; */
         }
 
         body {
@@ -65,126 +65,14 @@
 
 <body>
     <div id="app">
-        <g-row :gutter="40" align='left'>
-            <g-col :phone="{col:24, offset:2}"  :pad="{col:12}" :pc="{col:8}">
-                <div class="demo">233</div>
-            </g-col>
-            <g-col :coloffset='{col:2, offset:12}'>
-                <div class="demo">233</div>
-            </g-col>
-            <g-col :phone="{col:24}" :pad="{col:12}" :pc="{col:8}">
-                <div class="demo">233</div>
-            </g-col>
-            <g-col :phone="{col:24}" :pad="{col:12}" :pc="{col:8}">
-                <div class="demo">233</div>
-            </g-col>
-            <g-col :phone="{col:24}" :pad="{col:12}" :pc="{col:8}">
-                <div class="demo">233</div>
-            </g-col>
-            <g-col :phone="{col:24}" :pad="{col:12}" :pc="{col:8}">
-                <div class="demo">233</div>
-            </g-col>
-
-        </g-row>
-        <div v-if="false">
-            <div>
-                <g-row class=" topbar">
-                    <g-col class="demobox" col="9" :phone="{col:2}" :pad="{col:6}" :narrow-pc="{col:10}" :pc="{col:14}"
-                        :big-pc="{col:18}">
-                        <g-row align="left" gutter="00">
-                            <g-col>1</g-col>
-                            <g-col>2</g-col>
-                            <g-col>3</g-col>
-                            <g-col>4</g-col>
-                        </g-row>
-                    </g-col>
-                    <g-col class="demobox" col="15" :phone="{col:22}" :pad="{col:18}" :narrow-pc="{col:14}"
-                        :pc="{col:10}" :big-pc="{col:6}">
-                        <g-row align="right">
-                            <g-col>1</g-col>
-                            <g-col>2</g-col>
-                            <g-col>3</g-col>
-                            <g-col>4</g-col>
-                            <g-col>5</g-col>
-                            <g-col>6</g-col>
-                            <g-col>7</g-col>
-                        </g-row>
-                        <!--<img src="http://img.alicdn.com/tfs/TB1_uT8a5ERMeJjSspiXXbZLFXa-143-59.png" alt="">-->
-                    </g-col>
-                </g-row>
-                <g-row class="search-and-log-and-qrcode" align="center">
-                    <g-col class="demobox" col="4">
-                        <g-row align="center">
-                            <g-col>
-                                <div class="logo-wrapper">
-                                    <img class="logo"
-                                        src="http://img.alicdn.com/tfs/TB1_uT8a5ERMeJjSspiXXbZLFXa-143-59.png" alt="">
-                                </div>
-                            </g-col>
-                        </g-row>
-
-                    </g-col>
-                    <g-col class="demobox" col="14">
-                        <!--<img src="http://img.alicdn.com/tfs/TB1_uT8a5ERMeJjSspiXXbZLFXa-143-59.png" alt="">-->
-                    </g-col>
-                    <g-col class="demobox" col="6">
-
-                    </g-col>
-                </g-row>
-            </div>
-            <div>
-                <g-input v-model="msg"></g-input>
-                {{msg}}
-                <button @click="msg += 1"></button>
-
-                <g-input value="普通"></g-input>
-                <g-input value="禁用" disabled></g-input>
-                <g-input value="只读" v-bind:readonly="true"></g-input>
-                <g-input value="只读" v-bind:readonly="false"></g-input>
-                <g-input value="提示" error="错误提示"></g-input>
-            </div>
-            <div style="display: none;">
-                <g-button icon="setting" :loading="loadingFlag1 " @click="loadingFlag1  = !loadingFlag1 ">
-                    <!--<template slot="text">-->
-                    设置
-                    <!--</template>-->
-                </g-button>
-
-                <g-button icon="download" icon-position="right" :loading="loadingFlag2"
-                    @click="loadingFlag2 = !loadingFlag2">
-                    向右
-                </g-button>
-
-                <g-button icon-position="right" :loading="loadingFlag3" @click="loadingFlag3 = !loadingFlag3">
-                    按钮
-                </g-button>
-
-                <g-button :loading="true" icon-position="left">
-                    按钮
-                </g-button>
-
-                <g-button-group>
-                    <!--<div>&lt;!&ndash;&ndash;&gt;-->
-                    <g-button icon="left">上一页</g-button>
-                    <!--</div>-->
-                    <g-button>更多</g-button>
-                    <g-button icon="right" icon-position="right">下一页</g-button>
-                </g-button-group>
-            </div>
-            <div>
-                <g-row>
-                    <g-col :col="2" :offset="2">222</g-col>
-                    <g-col :col="20">333</g-col>
-                </g-row>
-            </div>
-            <div>
-                <g-row :gutter="40">
-                    <g-col :offset="2">222</g-col>
-                    <g-col>333</g-col>
-                </g-row>
-            </div>
-
-        </div>
+        <g-layout>
+            <g-sider>sider</g-sider>
+            <g-layout>
+                <g-header>header</g-header>
+                <g-content>content</g-content>
+                <g-footer>footer</g-footer>
+            </g-layout>
+        </g-layout>
     </div>
 
     <script src="./src/app.js"></script>

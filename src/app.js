@@ -6,18 +6,33 @@ import ButtonGroup from './button-group'
 import Input from './input'
 import Row from './row'
 import Col from './column'
+import Content from './content'
+import Footer from './footer'
+import Header from './header'
+import Layout from './layout'
+import Sider from './sider'
 
 import Chai from 'chai'
 import ChaiSpies from 'chai-spies'
 
 Chai.use(ChaiSpies)
 
-Vue.component('g-icon', Icon)
-Vue.component('g-button', Button)
-Vue.component('g-button-group', ButtonGroup)
-Vue.component('g-input', Input)
-Vue.component('g-row', Row)
-Vue.component('g-col', Col)
+let arr = {
+    'g-icon': Icon,
+    'g-button': Button,
+    'g-button-group': ButtonGroup,
+    'g-input': Input,
+    'g-row': Row,
+    'g-col': Col,
+    'g-content': Content,
+    'g-footer': Footer,
+    'g-header': Header,
+    'g-layout': Layout,
+    'g-sider': Sider
+}
+for (let i in arr) {
+    Vue.component(i, arr[i])
+}
 
 new Vue({
     el: '#app',
@@ -27,17 +42,15 @@ new Vue({
         loadingFlag3: false,
         msg: '123'
     },
-    created(){
-      setTimeout(()=>{
-          this.msg = 159487
-      },1000)
+    created() {
+        setTimeout(() => {
+            this.msg = 159487
+        }, 1000)
     },
     methods: {
         inputChange(e) {
             console.log(1, e.target.value)
-            this.$emit('change',e.target.value)
+            this.$emit('change', e.target.value)
         },
     }
 })
-
-
