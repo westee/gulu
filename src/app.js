@@ -11,11 +11,14 @@ import Footer from './footer'
 import Header from './header'
 import Layout from './layout'
 import Sider from './sider'
+import Toast from './toast'
+import plugin from './plugin'
 
 import Chai from 'chai'
 import ChaiSpies from 'chai-spies'
 
 Chai.use(ChaiSpies)
+Vue.use(plugin)
 
 let arr = {
     'g-icon': Icon,
@@ -28,7 +31,8 @@ let arr = {
     'g-footer': Footer,
     'g-header': Header,
     'g-layout': Layout,
-    'g-sider': Sider
+    'g-sider': Sider,
+    'g-toast': Toast
 }
 for (let i in arr) {
     Vue.component(i, arr[i])
@@ -49,8 +53,10 @@ new Vue({
     },
     methods: {
         inputChange(e) {
-            console.log(1, e.target.value)
             this.$emit('change', e.target.value)
         },
+        showToast() {
+            this.$toast(123)
     }
+}
 })
