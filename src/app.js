@@ -43,22 +43,11 @@ new Vue({
     data: {
         loadingFlag1: false,
         loadingFlag2: false,
-        loadingFlag3: false,
+        loadingFlag3: false,    
         msg: '123'
     },
     created() {
-        this.$toast('12345611234', {
-            toastPosition: 'middle',
-            autoClose: false,
-            closeButton: {
-                text: '关闭',
-                callback(toast) {
-                    toast.test()
-                    console.log('callback')
-                },
-                enable: false
-            }
-        })
+       
         setTimeout(() => {
             this.msg = 159487
         }, 1000)
@@ -67,8 +56,47 @@ new Vue({
         inputChange(e) {
             this.$emit('change', e.target.value)
         },
+        showToast2() {
+            this.$toast(`${Math.random()}`, {
+                toastPosition: 'middle',
+                autoClose: false,
+                closeButton: {
+                    text: '关闭',
+                    callback(toast) {
+                        toast.test()
+                        console.log('callback')
+                    },
+                    enable: false
+                }
+            })
+        },
+        showToast3() {
+            this.$toast(`${Math.random()}`, {
+                toastPosition: 'bottom',
+                autoClose: false,
+                closeButton: {
+                    text: '关闭',
+                    callback(toast) {
+                        toast.test()
+                        console.log('callback')
+                    },
+                    enable: false
+                }
+            })
+        },
         showToast() {
-            this.$toast(123)
+            this.$toast(`${Math.random()}`, {
+                toastPosition: 'top',
+                autoClose: false,
+                closeButton: {
+                    text: '关闭',
+                    callback(toast) {
+                        toast.test()
+                        console.log('callback')
+                    },
+                    enable: false
+                }
+            })
         }
     }
 })

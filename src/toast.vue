@@ -1,9 +1,11 @@
 <template>
-  <div class="toast" :class="`position-${toastPosition}`">
-    <slot v-if="!closeButton.enable"></slot>
-    <!-- 支持html -->
-    <div v-else-if="closeButton.enable" v-html="$slots.default"></div>
-    <span class="close" v-if="closeButton" @click="closeToastNow">{{closeButton.text}}</span>
+  <div class="wrapper" :class="`position-${toastPosition}`">
+    <div class="toast">
+      <slot v-if="!closeButton.enable"></slot>
+      <!-- 支持html -->
+      <div v-else-if="closeButton.enable" v-html="$slots.default"></div>
+      <span class="close" v-if="closeButton" @click="closeToastNow">{{closeButton.text}}</span>
+    </div>
   </div>
 </template>
 
@@ -58,6 +60,7 @@ export default {
     // 关闭toast
     close() {
       this.$el.remove();
+      this.$emit("close");
       this.$destroy();
     },
     // 立即关闭toast
@@ -76,10 +79,34 @@ export default {
 $toast-height: 40px;
 $font-size: 14px;
 $toast-bg: rgba(0, 0, 0, 0.75);
+
+.wrapper {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  &.position-top {
+    top: 0;
+    .toast {
+      animation: slide-down 0.3s;
+    }
+  }
+  &.position-bottom {
+    bottom: 0;
+    .toast {
+      animation: slide-up 0.3s;
+    }
+  }
+  &.position-middle {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    .toast {
+      animation: fade-in 0.3s;
+    }
+  }
+}
 .toast {
   display: flex;
   align-items: center;
-  position: fixed;
   background: $toast-bg;
   color: #fff;
   min-height: $toast-height;
@@ -102,20 +129,30 @@ $toast-bg: rgba(0, 0, 0, 0.75);
       // width: 50px;
     }
   }
-  &.position-top {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
-  &.position-bottom {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+  to {
+    opacity: 1;
   }
-  &.position-middle {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } 
+}
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 </style>
