@@ -47,14 +47,18 @@ new Vue({
         msg: '123'
     },
     created() {
-        this.$toast( '12345611234561 1234561 1234561 1234561 1234561 1234561 1234561 ',  {
-            text: '关闭',
-            callback(toast){
-              toast.test()
-              console.log('callback')
-            },
-            enable: false
-          })
+        this.$toast('12345611234', {
+            toastPosition: 'middle',
+            autoClose: false,
+            closeButton: {
+                text: '关闭',
+                callback(toast) {
+                    toast.test()
+                    console.log('callback')
+                },
+                enable: false
+            }
+        })
         setTimeout(() => {
             this.msg = 159487
         }, 1000)

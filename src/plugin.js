@@ -1,13 +1,11 @@
 import Toast from './toast'
-export default{
-  install(Vue, options){
-    Vue.prototype.$toast = (data, toastOptions = {})=>{
+export default {
+  install(Vue, options) {
+    Vue.prototype.$toast = (data, toastOptions = {}) => {
       let Construcotr = Vue.extend(Toast)
-
+      console.log(toastOptions)
       let com = new Construcotr({
-        propsData:{
-          closeButton: toastOptions
-        }
+        propsData: toastOptions
       })
       com.$slots.default = data
       com.$mount()

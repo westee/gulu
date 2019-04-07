@@ -1,5 +1,5 @@
 <template>
-  <div class="toast">
+  <div class="toast" :class="`position-${toastPosition}`">
     <slot v-if="!closeButton.enable"></slot>
     <!-- 支持html -->
     <div v-else-if="closeButton.enable" v-html="$slots.default"></div>
@@ -28,18 +28,32 @@ export default {
           enable: false
         };
       }
+    },
+    toastPosition: {
+      type: String,
+      default: "position-top",
+      validator(val) {
+        return ["top", "bottom", "middle"].indexOf(val) >= 0;
+      }
+    }
+  },
+  computed: {
+    positionClass() {
+      return {
+        [`position-${this.toastPosition}`]: true
+      };
     }
   },
   mounted() {
     if (this.autoClose) {
       setTimeout(() => {
         this.close();
-      }, this.autoCloseDelay * 100000);
+      }, this.autoCloseDelay * 100);
     }
   },
   methods: {
-    test(){
-      console.log('test')
+    test() {
+      console.log("test");
     },
     // 关闭toast
     close() {
@@ -66,9 +80,6 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
   position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   background: $toast-bg;
   color: #fff;
   min-height: $toast-height;
@@ -78,19 +89,33 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
 
   .close {
-  margin-left: 1em;
-  flex-shrink: 0;
-  // min-width: 4em; 
-  &::after {
-    content: "";
-    position: absolute;
-    border-left: 1px solid #fff;
-    top: 0;
-    right: 3.7em;
-    height: 100%;
-    // width: 50px;
+    margin-left: 1em;
+    flex-shrink: 0;
+    // min-width: 4em;
+    &::after {
+      content: "";
+      position: absolute;
+      border-left: 1px solid #fff;
+      top: 0;
+      right: 3.7em;
+      height: 100%;
+      // width: 50px;
+    }
   }
+  &.position-top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &.position-bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &.position-middle {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } 
 }
-}
-
 </style>
