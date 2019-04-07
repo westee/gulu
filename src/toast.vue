@@ -1,6 +1,8 @@
 <template>
   <div class="toast">
-    <slot></slot>
+    <slot v-if="!closeButton.enable"></slot>
+    <!-- 支持html -->
+    <div v-else-if="closeButton.enable" v-html="$slots.default"></div>
     <span class="close" v-if="closeButton" @click="closeToastNow">{{closeButton.text}}</span>
   </div>
 </template>
@@ -22,7 +24,8 @@ export default {
       default() {
         return {
           text: "关闭",
-          callback: null
+          callback: null,
+          enable: false
         };
       }
     }
@@ -60,29 +63,34 @@ $toast-height: 40px;
 $font-size: 14px;
 $toast-bg: rgba(0, 0, 0, 0.75);
 .toast {
+  display: flex;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   background: $toast-bg;
   color: #fff;
-  height: $toast-height;
-  line-height: $toast-height;
-  padding: 0 16px;
+  min-height: $toast-height;
+  line-height: 1.6;
+  padding: 4px 16px;
   border-radius: 4px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-}
-.close {
+
+  .close {
   margin-left: 1em;
-  position: relative;
+  flex-shrink: 0;
+  // min-width: 4em; 
   &::after {
     content: "";
     position: absolute;
     border-left: 1px solid #fff;
     top: 0;
-    left: -0.7em;
+    right: 3.7em;
     height: 100%;
     // width: 50px;
   }
 }
+}
+
 </style>

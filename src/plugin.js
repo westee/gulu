@@ -6,7 +6,7 @@ export default{
 
       let com = new Construcotr({
         propsData:{
-          closeButton: toastOptions.closeButton
+          closeButton: toastOptions
         }
       })
       com.$slots.default = data
