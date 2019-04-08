@@ -25,6 +25,7 @@ describe('Col', () => {
         const divElement = vm.$el
         expect(divElement.classList.contains('col-default-1')).to.eq(true)
         expect(divElement.classList.contains('offset-default-1')).to.eq(true)
+        vm.$el.remove()
         vm.$destroy()
     })
     it('可以设置 phone.', () => {
@@ -43,6 +44,7 @@ describe('Col', () => {
         const divElement = vm.$el
         expect(divElement.classList.contains('col-phone-1')).to.eq(true)
         expect(divElement.classList.contains('offset-phone-1')).to.eq(true)
+        vm.$el.remove()
         vm.$destroy()
     })
     it('可以设置 pad.', () => {
@@ -61,6 +63,7 @@ describe('Col', () => {
         const divElement = vm.$el
         expect(divElement.classList.contains('col-pad-1')).to.eq(true)
         expect(divElement.classList.contains('offset-pad-1')).to.eq(true)
+        vm.$el.remove()
         vm.$destroy()
     })
 
@@ -80,6 +83,7 @@ describe('Col', () => {
         const divElement = vm.$el
         expect(divElement.classList.contains('col-narrowPc-1')).to.eq(true)
         expect(divElement.classList.contains('offset-narrowPc-1')).to.eq(true)
+        vm.$el.remove()
         vm.$destroy()
     })
     it('可以设置 pc.', () => {
@@ -98,6 +102,7 @@ describe('Col', () => {
         const divElement = vm.$el
         expect(divElement.classList.contains('col-pc-1')).to.eq(true)
         expect(divElement.classList.contains('offset-pc-1')).to.eq(true)
+        vm.$el.remove()
         vm.$destroy()
     })
     it('可以设置 bigPc.', () => {
@@ -114,10 +119,9 @@ describe('Col', () => {
         }).$mount(div)
 
         const divElement = vm.$el
-        console.log(divElement.classList)
         expect(divElement.classList.contains('col-bigPc-1')).to.eq(true)
         expect(divElement.classList.contains('offset-bigPc-1')).to.eq(true)
-        
+        vm.$el.remove()
         vm.$destroy()
     })
 })

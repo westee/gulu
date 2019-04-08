@@ -19,7 +19,7 @@ export default {
     },
     autoCloseDelay: {
       type: Number,
-      default: 3
+      default: 1
     },
     closeButton: {
       type: Object,
@@ -33,7 +33,7 @@ export default {
     },
     toastPosition: {
       type: String,
-      default: "position-top",
+      default: "top",
       validator(val) {
         return ["top", "bottom", "middle"].indexOf(val) >= 0;
       }
@@ -47,15 +47,12 @@ export default {
     }
   },
   mounted() {
-    if (this.autoClose) {
-      setTimeout(() => {
-        this.close();
-      }, this.autoCloseDelay * 100);
-    }
+    this.execAutoClose();
   },
   methods: {
+    // 关闭toast时可以执行的函数
     test() {
-      console.log("test");
+      // console.log("test");
     },
     // 关闭toast
     close() {
@@ -69,6 +66,14 @@ export default {
       // 检测是否传递了toast的第二个参数
       if (this.closeButton && typeof this.closeButton.callback === "function") {
         this.closeButton.callback(this);
+      }
+    },
+    // 是否开启了自动关闭toast
+    execAutoClose() {
+      if (this.autoClose) {
+        setTimeout(() => {
+          this.close();
+        }, this.autoCloseDelay * 1000);
       }
     }
   }

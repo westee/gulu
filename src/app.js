@@ -64,7 +64,6 @@ new Vue({
                     text: '关闭',
                     callback(toast) {
                         toast.test()
-                        console.log('callback')
                     },
                     enable: false
                 }
@@ -78,7 +77,6 @@ new Vue({
                     text: '关闭',
                     callback(toast) {
                         toast.test()
-                        console.log('callback')
                     },
                     enable: false
                 }
@@ -92,7 +90,6 @@ new Vue({
                     text: '关闭',
                     callback(toast) {
                         toast.test()
-                        console.log('callback')
                     },
                     enable: false
                 }

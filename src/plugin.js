@@ -16,7 +16,6 @@ export default {
 
 function creaetToast(Vue, toastData, toastOptions, onClose) {
   let Construcotr = Vue.extend(Toast)
-  console.log(toastOptions)
   let com = new Construcotr({
     propsData: toastOptions
   })

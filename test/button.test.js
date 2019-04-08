@@ -18,6 +18,7 @@
             }).$mount()
             const useElement = vm.$el.querySelector('use')
             expect(useElement.getAttribute('xlink:href')).to.equal('#icon-setting')
+            vm.$el.remove()
             vm.$destroy()
         })
         it('可以设置loading.', () => {
@@ -31,6 +32,7 @@
             const useElements = vm.$el.querySelectorAll('use')
             expect(useElements.length).to.equal(1)
             expect(useElements[0].getAttribute('xlink:href')).to.equal('#icon-loading')
+            vm.$el.remove()
             vm.$destroy()
         })
         it('icon 默认的 order 是 1', () => {
@@ -74,5 +76,8 @@
             vm.$on('click', callback)
             vm.$el.click()
             expect(callback).to.have.been.called
+            vm.$el.remove()
+            vm.$destroy()
         })
+  
     })
