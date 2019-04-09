@@ -17,6 +17,13 @@ import plugin from './plugin'
 import Chai from 'chai'
 import ChaiSpies from 'chai-spies'
 
+import Tabs from './tabs'
+import TabsItem from './tabs-item'
+import TabsPanel from './tabs-panel'
+import TabsBody from './tabs-body'
+import TabsHead from './tabs-head'
+
+
 Chai.use(ChaiSpies)
 Vue.use(plugin)
 
@@ -32,7 +39,12 @@ let arr = {
     'g-header': Header,
     'g-layout': Layout,
     'g-sider': Sider,
-    'g-toast': Toast
+    'g-toast': Toast,
+    'g-tabs': Tabs,
+    'g-tabs-item': TabsItem,
+    'g-tabs-panel': TabsPanel,
+    'g-tabs-head': TabsHead,
+    'g-tabs-body': TabsBody
 }
 for (let i in arr) {
     Vue.component(i, arr[i])
@@ -41,10 +53,7 @@ for (let i in arr) {
 new Vue({
     el: '#app',
     data: {
-        loadingFlag1: false,
-        loadingFlag2: false,
-        loadingFlag3: false,    
-        msg: '123'
+        selectedTabs: 'man'
     },
     created() {
        
@@ -53,6 +62,9 @@ new Vue({
         }, 1000)
     },
     methods: {
+        xxx(val){
+            console.log(val)
+        },
         inputChange(e) {
             this.$emit('change', e.target.value)
         },
