@@ -53,7 +53,7 @@ for (let i in arr) {
 new Vue({
     el: '#app',
     data: {
-        selectedTabs: 'man'
+        selectedTabs: 'men'
     },
     created() {
        
