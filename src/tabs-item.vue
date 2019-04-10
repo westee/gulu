@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="clickItem" :class="itemClass">
+  <div class="tabs-item" @click="clickItem" :class="itemClass" :data-name="name">
     <slot></slot>
   </div>
 </template>
@@ -32,20 +32,26 @@ export default {
     }
   },
   created() {
-    this.eventBus.$on("update:selected", (name,vm) => {
-      if (name === this.name) {
-        // console.log(this.name+'选中');
-        this.active = true;
-      } else {
-        // console.log(this.name+'未选中');
-        this.active = false;
-      }
-    });
+    if (this.eventBus) {
+      this.eventBus.$on("update:selected", (name, vm) => {
+        if (name === this.name) {
+          // console.log(this.name+'选中');
+          this.active = true;
+        } else {
+          // console.log(this.name+'未选中');
+          this.active = false;
+        }
+      });
+    }
   },
   methods: {
     clickItem(val) {
-      if(this.disabled){ return }
-      this.eventBus.$emit("update:selected", this.name, this);
+      if (this.disabled) {
+        return;
+      }
+      this.eventBus
+        ? this.eventBus.$emit("update:selected", this.name, this)
+        : "";
     }
   }
 };
@@ -63,7 +69,7 @@ $tab-height: 40px;
     // background: red;
     color: blue;
   }
-  &.disabled{
+  &.disabled {
     cursor: not-allowed;
     color: gray;
   }

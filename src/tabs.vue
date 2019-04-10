@@ -33,8 +33,10 @@ export default {
   },
   created() {},
   mounted() {
+    if (!this.$children.length) {
+      console.error('tabs组件必须包含<g-tabs-head>和<g-tabs-body>组件');
+    }
     // this.$emit('update:selected','测试数据')
-    //
     this.$children.forEach(vm => {
       // tabs有两个子组件 g-tabs-body g-tabs-head
       if (vm.$options.name === "g-tabs-head") {

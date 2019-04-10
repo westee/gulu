@@ -12,8 +12,6 @@ describe('Row', () => {
     })
     // 有异步代码需要加一个done参数。
     it('可以设置gutter.', (done) => {
-        // const RowConstructor = Vue.extend(Row)
-        // const ColConstructor = Vue.extend(Col)
         Vue.component('g-row', Row)
         Vue.component('g-col', Col)
         let div = document.createElement('div')
@@ -27,7 +25,6 @@ describe('Row', () => {
         const vm = new Vue({
             el: div
         })
-        
         setTimeout(function(){
             let row = vm.$el.querySelector('.row')
             expect(getComputedStyle(row).marginLeft).to.equal('-10px')
@@ -35,9 +32,9 @@ describe('Row', () => {
             let cols = vm.$el.querySelector('.col')
             expect(getComputedStyle(cols).paddingLeft).to.equal('10px')
             expect(getComputedStyle(cols).paddingRight).to.equal('10px')
-            done()
             vm.$el.remove()
             vm.$destroy()
+            done()
         },0)
     })
 

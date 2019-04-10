@@ -16,7 +16,6 @@ export default {
   created() {
     this.eventBus.$on('update:selected',(name, vm)=>{
       // console.log(name)
-      console.log(vm.$el.getBoundingClientRect());
       let {width, height, left, right} = vm.$el.getBoundingClientRect()
       this.$refs.line.style.width = `${width}px`      
       this.$refs.line.style.marginLeft = `${left}px`            

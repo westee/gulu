@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-panel" :class="panelClass" v-if="active">
+  <div class="tabs-panel" :class="panelClass" v-if="active" :data-name="name">
     <slot></slot>
   </div>
 </template>
@@ -28,6 +28,7 @@ export default {
   },
   inject: ["eventBus"],
   created() {
+    if (!this.eventBus) return  
     this.eventBus.$on("update:selected", (name, vm)=> {
       if (name === this.name) {
         // console.log('panel'+this.name+'选中');
@@ -42,8 +43,5 @@ export default {
 </script>
 
 <style lang="scss">
-.tabs-panel {
-  &.active {
-  }
-}
+
 </style>
