@@ -28,7 +28,7 @@ export default {
   },
   inject: ["eventBus"],
   created() {
-    this.eventBus.$on("update:selected", name => {
+    this.eventBus.$on("update:selected", (name, vm)=> {
       if (name === this.name) {
         // console.log('panel'+this.name+'选中');
         this.active = true;

@@ -34,7 +34,23 @@ export default {
   created() {},
   mounted() {
     // this.$emit('update:selected','测试数据')
-    this.eventBus.$emit("update:selected", this.selected);
+    //
+    this.$children.forEach(vm => {
+      // tabs有两个子组件 g-tabs-body g-tabs-head
+      if (vm.$options.name === "g-tabs-head") {
+        // g-tabs-head的所有g-tabs-item组件
+        vm.$children.map(item => {
+          // 是g-tabs-item组件，且当前组件是选中组件。
+          if (
+            item.$options.name === "g-tabs-item" &&
+            item.name === this.selected
+          ) {
+            // 选中的元素name和实例。
+            this.eventBus.$emit("update:selected", this.selected, item);
+          }
+        });
+      }
+    });
   }
 };
 </script>

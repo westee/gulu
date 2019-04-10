@@ -7,54 +7,59 @@
 <script>
 export default {
   name: "g-tabs-item",
-  data(){
+  data() {
     return {
       active: false
-    }
+    };
   },
-  props:{
-    disabled:{
+  props: {
+    disabled: {
       type: Boolean,
       default: false
     },
-    name:{
+    name: {
       type: String | Number,
       required: true
     }
   },
   inject: ["eventBus"],
-  computed:{
-    itemClass(){
+  computed: {
+    itemClass() {
       return {
         active: this.active
-      }
+      };
     }
   },
-  created(){
-    this.eventBus.$on('update:selected', (name)=>{
-      if(name === this.name){
+  created() {
+    this.eventBus.$on("update:selected", (name,vm) => {
+      if (name === this.name) {
         // console.log(this.name+'选中');
         this.active = true;
-      }else{
+      } else {
         // console.log(this.name+'未选中');
         this.active = false;
       }
-    })
+    });
   },
-  methods:{
-    yyy(val){
-      this.eventBus.$emit('update:selected', this.name)
+  methods: {
+    yyy(val) {
+      this.eventBus.$emit("update:selected", this.name, this);
     }
   }
 };
 </script>
 
-<style lang="scss">
-.tabs-item{
+<style lang="scss" scope>
+$tab-height: 40px;
+.tabs-item {
+  cursor: pointer;
   padding: 0 1em;
   flex-shrink: 0;
-  &.active{
-    background: red;
+  line-height: $tab-height;
+  min-height: $tab-height;
+  &.active {
+    // background: red;
+    color: blue;
   }
 }
 </style>
