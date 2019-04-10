@@ -31,8 +31,8 @@ $tab-height: 40px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid red;
   position: relative;
+  border-bottom: 1px solid #ddd;
   .line{
     position: absolute;
     border-bottom: 2px solid blue;

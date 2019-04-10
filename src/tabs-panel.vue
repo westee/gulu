@@ -44,7 +44,6 @@ export default {
 <style lang="scss">
 .tabs-panel {
   &.active {
-    background: red;
   }
 }
 </style>
