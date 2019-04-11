@@ -64,28 +64,21 @@
 </head>
 
 <body>
-    <div id="app">
-        <g-tabs :selected.sync="selectedTabs" @update:selected="xxx">
-            <g-tabs-head>
-                <template slot="actions">
-                    <button>设置</button>
-                </template>
-                <g-tabs-item name="men">
-                    <g-icon name="setting"></g-icon>帅哥
-                </g-tabs-item>
-                <g-tabs-item name="women" disabled>
-                    美女
-                </g-tabs-item>
-            </g-tabs-head>
-            <g-tabs-body>
-                <g-tabs-panel  name="men">
-                    帅哥详细咨询
-                </g-tabs-panel>
-                <g-tabs-panel  name="women">
-                    美女详细咨询
-                </g-tabs-panel>
-            </g-tabs-body>
-        </g-tabs>
+
+
+    <div id="app" style="  padding: 100px 0 0 100px;">
+        <g-popover>
+            <template v-slot:content>
+                <div>我是内容1</div>
+            </template>
+            <button>内容1</button>
+        </g-popover>
+        <g-popover>
+            <template v-slot:content>
+                <div>我是内容2</div>
+            </template>
+            <button>内容2</button>
+        </g-popover>
     </div>
 
     <script src="./src/app.js"></script>

@@ -23,6 +23,7 @@ import TabsPanel from './tabs-panel'
 import TabsBody from './tabs-body'
 import TabsHead from './tabs-head'
 
+import Popover from './popover'
 
 Chai.use(ChaiSpies)
 Vue.use(plugin)
@@ -44,7 +45,8 @@ let arr = {
     'g-tabs-item': TabsItem,
     'g-tabs-panel': TabsPanel,
     'g-tabs-head': TabsHead,
-    'g-tabs-body': TabsBody
+    'g-tabs-body': TabsBody,
+    'g-popover': Popover
 }
 for (let i in arr) {
     Vue.component(i, arr[i])
