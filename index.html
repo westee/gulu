@@ -64,20 +64,30 @@
 </head>
 
 <body>
-
-
     <div id="app" style="  padding: 100px 0 0 100px;">
-        <g-popover>
+        <g-popover position="bottom">
             <template v-slot:content>
                 <div>我是内容1</div>
             </template>
-            <button>内容1</button>
+            <g-button>内容1</button>
         </g-popover>
         <g-popover>
             <template v-slot:content>
                 <div>我是内容2</div>
             </template>
-            <button>内容2</button>
+            <g-button>内容2</button>
+        </g-popover>
+        <g-popover position='left'>
+            <template v-slot:content>
+                <div>我是内容3</div>
+            </template>
+            <g-button>内容3</button>
+        </g-popover>
+        <g-popover position="right">
+            <template v-slot:content>
+                <div>我是内容4</div>
+            </template>
+            <g-button>内容4</button>
         </g-popover>
     </div>
 
