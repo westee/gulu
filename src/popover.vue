@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click.stop="xxx">
+  <div class="popover" ref="popover" @click="clickPopover">
     <div class="content-wrapper" ref="contentWrapper" v-if="visible">
       <slot name="content"></slot>
     </div>
@@ -18,31 +18,48 @@ export default {
     };
   },
   methods: {
-    xxx() {
-      this.visible = !this.visible;
-      if (this.visible) {
-        this.$nextTick(() => {
-          document.body.appendChild(this.$refs.contentWrapper);
-          let {
-            top,
-            left,
-            width,
-            height
-          } = this.$refs.triggerWrapper.getBoundingClientRect();
-          this.$refs.contentWrapper.style.left = left+'px';
-          this.$refs.contentWrapper.style.top = top+'px';
-
-          document.addEventListener("click", add);
-        }, 0);
+    // 根据触发器设置popover的位置
+    popoverContentPosition() {
+      document.body.appendChild(this.$refs.contentWrapper);
+      let {
+        top,
+        left,
+        width,
+        height
+      } = this.$refs.triggerWrapper.getBoundingClientRect();
+      this.$refs.contentWrapper.style.left = left + window.scrollX + "px";
+      this.$refs.contentWrapper.style.top = top + window.scrollY + "px";
+    },
+    // 点击整个文档
+    clickDocument(e) {
+      // 单击document时，如果目标是popover,或者是popover内容，则return
+      if((this.$refs.popover && this.$refs.popover.contains(e.target)) || this.$refs.contentWrapper.contains(e.target)){
+        return 
+      } else {
+        // 取消监听器
+        this.closePopover()
       }
-
-      let add = () => {
-        this.visible = false;
-        clear();
-      };
-      let clear = () => {
-        document.removeEventListener("click", add);
-      };
+    },
+    // 展示popover
+    displayPopover() {
+      this.visible = true;
+      // 保证元素挂载到dom上了。
+      this.$nextTick(() => {
+        this.popoverContentPosition();
+        document.addEventListener("click", this.clickDocument);
+      });
+    },
+    // 关闭popover
+    closePopover() {
+      this.visible = false;
+      document.removeEventListener("click", this.clickDocument);
+    },
+    clickPopover() {
+      if (this.visible) {
+        this.closePopover();
+      } else {
+        this.displayPopover();
+      }
     }
   }
 };
