@@ -67,8 +67,10 @@
     <div id="app" style="  padding: 100px 0 0 100px;">
         <div>
             <g-popover position="bottom">
-                <template v-slot:content>
-                    <div>我是内容1</div>
+                <template v-slot:content="{closeFn}">
+                    <div>我是内容1
+                        <g-button @click="closeFn">关闭</g-button>
+                    </div>
                 </template>
                 <g-button>内容1</button>
             </g-popover>

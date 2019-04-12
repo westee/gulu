@@ -6,7 +6,7 @@
       v-if="visible"
       :class="{[`position-${position}`]: true}"
     >
-      <slot name="content"></slot>
+      <slot name="content" :closeFn="closePopover"></slot>
     </div>
     <span ref="triggerWrapper" style="display: inline-block">
       <slot></slot>
@@ -121,7 +121,15 @@ export default {
         this.displayPopover();
       }
     }
-  }
+  },
+  destroyed() {
+    if (this.triggerType === "click") {
+        this.$refs.popover.removeEventListener("click", this.clickPopover);
+      } else {
+        this.$refs.popover.removeEventListener("mouseenter", this.displayPopover);
+        this.$refs.popover.removeEventListener("mouseleave", this.closePopover);
+      }
+  },
 };
 </script>
 
