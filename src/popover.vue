@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" ref="popover" @click="clickPopover">
+  <div class="popover" ref="popover">
     <div
       class="content-wrapper"
       ref="contentWrapper"
@@ -25,14 +25,33 @@ export default {
       validator(val) {
         return ["top", "bottom", "right", "left"].indexOf(val) >= 0;
       }
+    },
+    triggerType: {
+      type: String,
+      default: "click",
+      validator(val) {
+        return ["click", "mouseenter"].indexOf(val) >= 0;
+      }
     }
   },
+  mounted() {
+    this.selectTriggerType();
+  },
+  computed: {},
   data() {
     return {
       visible: false
     };
   },
   methods: {
+    selectTriggerType() {
+      if (this.triggerType === "click") {
+        this.$refs.popover.addEventListener("click", this.clickPopover);
+      } else {
+        this.$refs.popover.addEventListener("mouseenter", this.displayPopover);
+        this.$refs.popover.addEventListener("mouseleave", this.closePopover);
+      }
+    },
     // 根据触发器设置popover的位置
     popoverContentPosition() {
       document.body.appendChild(this.$refs.contentWrapper);
@@ -43,31 +62,30 @@ export default {
         width,
         height
       } = this.$refs.triggerWrapper.getBoundingClientRect();
-      if (this.position === "top") {
-        contentWrapper.style.left = left + window.scrollX + "px";
-        contentWrapper.style.top = top + window.scrollY + "px";
-      } else if (this.position === "bottom") {
-        contentWrapper.style.left = left + window.scrollX + "px";
-        contentWrapper.style.top = top + window.scrollY + height + "px";
-      } else if (this.position === "left") {
-        // 获得popover的宽度
-        let {
-          height: contentWrapperHeight
-        } = this.$refs.contentWrapper.getBoundingClientRect();
-        contentWrapper.style.left = left + window.scrollX + "px";
-        contentWrapper.style.top =
-          top + window.scrollY - (contentWrapperHeight - height) / 2 + "px";
-      }else if (this.position === "right") {
-        // 获得popover的宽度
-        let {
-          height: contentWrapperHeight,
-        } = this.$refs.contentWrapper.getBoundingClientRect();
-        console.log(left);
-        
-        contentWrapper.style.left = left + window.scrollX + width +"px";
-        contentWrapper.style.top =
-          top + window.scrollY - (contentWrapperHeight - height) / 2 + "px";
-      }
+      // 获得popover的宽度
+      let {
+        height: contentWrapperHeight
+      } = this.$refs.contentWrapper.getBoundingClientRect();
+      let positionArr = {
+        top: {
+          left: left + window.scrollX,
+          top: top + window.scrollY
+        },
+        bottom: {
+          left: left + window.scrollX,
+          top: top + window.scrollY + height
+        },
+        left: {
+          left: left + window.scrollX,
+          top: top + window.scrollY - (contentWrapperHeight - height) / 2
+        },
+        right: {
+          left: left + window.scrollX + width,
+          top: top + window.scrollY - (contentWrapperHeight - height) / 2
+        }
+      };
+      contentWrapper.style.left = positionArr[this.position].left + "px";
+      contentWrapper.style.top = positionArr[this.position].top + "px";
     },
     // 点击整个文档
     clickDocument(e) {
@@ -171,9 +189,9 @@ $border-radius: 4px;
       // 向上移动本身高度
       transform: translateY(-100%);
     }
-  } // popover在右边
+  }
+  // popover在右边
   &.position-right {
-    // transform: translateX(calc(100%));
     margin-left: 10px;
     &::before {
       border-right-color: black;
