@@ -5,7 +5,7 @@
         <!--</svg>-->
         <g-icon v-if="icon && !loading"  :name="icon"></g-icon>
         <g-icon name="loading" v-if="loading" class="loading"></g-icon>
-        <span class="content">
+        <span class="button-content">
             <!--<slot name="text"></slot>-->
             <slot></slot>
         </span>
@@ -41,29 +41,36 @@
 </script>
 
 <style lang="scss">
+$font-size: 14px;
+$button-height: 32px;
+$border-radius:  4px;
+$border-color: #999;
+$button-bg: #fff;
+$border-cover-hover: #666;
+$button-active-bg: #eee;
     .g-button {
         display: inline-flex;
         justify-content: center;
         align-items: center;
         vertical-align: middle;
-        font-size: var(--font-size);
-        height: var(--button-height);
+        font-size: $font-size;
+        height: $button-height;
         padding: 0 1em;
-        border-radius: var(--border-radius);
-        border: 1px solid var(--border-color);
-        background: var(--button-bg);
-        .content{order:2}
+        border-radius: $border-radius;
+        border: 1px solid $border-color;
+        background: $button-bg;
+        .button-content{order:2}
         .icon{order:1}
         &.right{
-            .content{order: 1}
+            .button-content{order: 1}
             .icon{order: 2}
         }
         &:hover {
-            border-color: var(--border-cover-hover);
+            border-color: $border-cover-hover;
         }
 
         &:active {
-            background: var(--button-active-bg)
+            background: $button-active-bg;
         }
 
         &:focus {

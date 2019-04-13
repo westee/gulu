@@ -1,9 +1,11 @@
 {
   "name": "gulu-simple-learn",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "rails for learn",
   "main": "dist/index.js",
   "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
     "dev-test": "parcel watch test/* --no-cache & npx karma start",
     "test": "parcel build test/* --no-minify && karma start --single-run",
     "clean": "rm -rf .cache;rm -rf dist/*",
@@ -41,9 +43,11 @@
     "parcel": "^1.9.2",
     "parcel-bundler": "^1.11.0",
     "puppeteer": "^1.5.0",
+    "sass-loader": "^7.1.0",
     "sinon": "^7.2.3",
     "sinon-chai": "^3.3.0",
-    "vue-template-compiler": "^2.6.6"
+    "vue-template-compiler": "^2.6.6",
+    "vuepress": "^0.14.10"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"
