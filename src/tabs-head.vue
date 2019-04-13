@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-head">
+  <div class="tabs-head" ref="head">
     <slot></slot>
     <div ref="line" class="line"></div>
     <div class="action-wrapper">
@@ -13,12 +13,13 @@ import { log } from 'util';
 export default {
   name: "g-tabs-head",
   inject: ["eventBus"],
-  created() {
+  mounted() {
     this.eventBus.$on('update:selected',(name, vm)=>{
-      // console.log(name)
       let {width, height, left, right} = vm.$el.getBoundingClientRect()
+      let {left: left2} = this.$refs.head.getBoundingClientRect()
+
       this.$refs.line.style.width = `${width}px`      
-      this.$refs.line.style.marginLeft = `${left}px`            
+      this.$refs.line.style.left = `${left - left2}px`            
     })
   }
 };
@@ -33,11 +34,12 @@ $tab-height: 40px;
   position: relative;
   border-bottom: 1px solid #ddd;
   .line{
+    left: 0;
     position: absolute;
-    border-bottom: 2px solid blue;
+    border-bottom: 2px solid #3eaf7c;
     bottom: 0px;
     width: 4em;
-    transition: margin-left 0.3s, width 0.3s;
+    transition: all 0.3s, width 0.3s;
   }
   .action-wrapper{
     margin-left: auto;

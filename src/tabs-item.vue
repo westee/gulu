@@ -67,7 +67,7 @@ $tab-height: 40px;
   min-height: $tab-height;
   &.active {
     // background: red;
-    color: blue;
+    // color: #3eaf7c;
   }
   &.disabled {
     cursor: not-allowed;
