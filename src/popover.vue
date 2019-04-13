@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import { setTimeout } from "timers";
-import { Stream } from "stream";
+
 export default {
   props: {
     position: {
@@ -123,9 +122,9 @@ export default {
     }
   },
   destroyed() {
-    if (this.triggerType === "click") {
+    if (this.triggerType === "click" && this.$refs.popover) {
         this.$refs.popover.removeEventListener("click", this.clickPopover);
-      } else {
+      } else if(this.$refs.popover){
         this.$refs.popover.removeEventListener("mouseenter", this.displayPopover);
         this.$refs.popover.removeEventListener("mouseleave", this.closePopover);
       }
@@ -142,6 +141,7 @@ $border-radius: 4px;
   position: relative;
 }
 .content-wrapper {
+  z-index: 9;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
   word-break: break-all;
   max-width: 20em;

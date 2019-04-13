@@ -1,16 +1,15 @@
 <template>
   <div class="wrapper" :class="`position-${toastPosition}`">
     <div class="toast">
-      <slot v-if="!closeButton.enable"></slot>
+      <slot v-if="!closeButton.enableHTML"></slot>
       <!-- 支持html -->
-      <div v-else-if="closeButton.enable" v-html="$slots.default"></div>
+      <div v-else-if="closeButton.enableHTML" v-html="$slots.default"></div>
       <span class="close" v-if="closeButton" @click="closeToastNow">{{closeButton.text}}</span>
     </div>
   </div>
 </template>
 
 <script>
-import { setTimeout } from "timers";
 export default {
   props: {
     autoClose: {
@@ -19,7 +18,7 @@ export default {
     },
     autoCloseDelay: {
       type: Number,
-      default: 1
+      default: 2
     },
     closeButton: {
       type: Object,
@@ -27,7 +26,7 @@ export default {
         return {
           text: "关闭",
           callback: null,
-          enable: false
+          enableHTML: false
         };
       }
     },
@@ -80,12 +79,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $toast-height: 40px;
 $font-size: 14px;
 $toast-bg: rgba(0, 0, 0, 0.75);
-
+*{
+  box-sizing: border-box;
+}
 .wrapper {
+  z-index: 20;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -129,7 +131,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
       position: absolute;
       border-left: 1px solid #fff;
       top: 0;
-      right: 3.7em;
+      right: 3.55em;
       height: 100%;
       // width: 50px;
     }

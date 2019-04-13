@@ -29,10 +29,6 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  div{
-  border: 1px solid gray;
-
-  }
   &.hasSider{
     flex-direction: row;
     .layout{
