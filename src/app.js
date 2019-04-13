@@ -71,6 +71,7 @@ new Vue({
             this.$emit('change', e.target.value)
         },
         showToast2() {
+            console.log(this)
             this.$toast(`${Math.random()}`, {
                 toastPosition: 'middle',
                 autoClose: false,

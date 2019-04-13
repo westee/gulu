@@ -1,5 +1,5 @@
 module.exports = {
-  base:"/gulu/",
+  base: "/gulu/",
   title: 'Biker UI',
   description: 'a vue rails',
   themeConfig: {
@@ -9,23 +9,24 @@ module.exports = {
         link: '/'
       },
       {
-        text: 'Guide',
-        link: '/guide/'
-      },
-      {
-        text: 'External',
-        link: 'https://google.com'
-      },
+        text: '文档',
+        link: '/components/'
+      }
     ],
     // 侧边栏
     sidebar: [
-      '/',
       {
-      title: '组件',
-      collapsable: true,
-      children: [
-        '/components/button.md'
-      ]
-    } ]
+        title: '组件',
+        children: [
+          '/components/button',
+          '/components/input',
+          '/components/toast',
+          '/components/grid',
+          '/components/popover',
+          '/components/tab',
+          '/components/layout'
+        ]
+      }
+    ]
   }
 }
