@@ -61,7 +61,7 @@ describe('Toast', () => {
     const vm = new Constructor({
       propsData: {
         closeButton:{
-          enable: true
+          enableHTML: true
         }
       }
     })
