@@ -6,10 +6,9 @@
       <slot name="actions"></slot>
     </div>
   </div>
-</template>
+</template> 
 
 <script>
-import { log } from 'util';
 export default {
   name: "g-tabs-head",
   inject: ["eventBus"],

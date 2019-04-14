@@ -13,6 +13,10 @@ export default {
       type: String,
       required: true
     },
+    /**
+     * @todo
+     * 竖向tab  尚未完成
+     */
     direction: {
       type: String,
       default: "horizontal",
