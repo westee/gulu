@@ -80,9 +80,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$toast-height: 40px;
-$font-size: 14px;
-$toast-bg: rgba(0, 0, 0, 0.75);
+@import 'common.scss';
 *{
   box-sizing: border-box;
 }

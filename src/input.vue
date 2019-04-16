@@ -50,14 +50,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'common.scss';
 * {
   box-sizing: border-box;
 }
-$height: 32px;
-$border-color: #999;
-$border-color-hover: #666;
-$border-radius: 4px;
-$red: #f14530;
 .wrapper {
   font-size: 14px;
   display: inline-flex;
