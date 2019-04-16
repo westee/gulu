@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Toast 弹窗 | Biker UI</title>
+    <meta name="description" content="a vue rails">
+    
+    
+    <link rel="preload" href="/gulu/assets/css/0.styles.19012039.css" as="style"><link rel="preload" href="/gulu/assets/js/app.3352c8cd.js" as="script"><link rel="preload" href="/gulu/assets/js/22.16357e3b.js" as="script"><link rel="prefetch" href="/gulu/assets/js/10.a92f7e39.js"><link rel="prefetch" href="/gulu/assets/js/11.186493eb.js"><link rel="prefetch" href="/gulu/assets/js/12.a9c8b1da.js"><link rel="prefetch" href="/gulu/assets/js/13.6d4c935e.js"><link rel="prefetch" href="/gulu/assets/js/14.36c92a5c.js"><link rel="prefetch" href="/gulu/assets/js/15.85978504.js"><link rel="prefetch" href="/gulu/assets/js/16.4797f3ee.js"><link rel="prefetch" href="/gulu/assets/js/17.365ebf12.js"><link rel="prefetch" href="/gulu/assets/js/18.fcd18a35.js"><link rel="prefetch" href="/gulu/assets/js/19.efc5ea98.js"><link rel="prefetch" href="/gulu/assets/js/2.85af1d96.js"><link rel="prefetch" href="/gulu/assets/js/20.8ddb4e8c.js"><link rel="prefetch" href="/gulu/assets/js/21.12952281.js"><link rel="prefetch" href="/gulu/assets/js/23.d4241dfa.js"><link rel="prefetch" href="/gulu/assets/js/24.1329e362.js"><link rel="prefetch" href="/gulu/assets/js/25.110031f1.js"><link rel="prefetch" href="/gulu/assets/js/26.16f572a7.js"><link rel="prefetch" href="/gulu/assets/js/27.b5869bcd.js"><link rel="prefetch" href="/gulu/assets/js/3.3b80da40.js"><link rel="prefetch" href="/gulu/assets/js/4.41ca6cb9.js"><link rel="prefetch" href="/gulu/assets/js/5.61ccf97e.js"><link rel="prefetch" href="/gulu/assets/js/6.7563c7a9.js"><link rel="prefetch" href="/gulu/assets/js/7.a585eb6e.js"><link rel="prefetch" href="/gulu/assets/js/8.f40cb788.js"><link rel="prefetch" href="/gulu/assets/js/9.8ce66b45.js">
+    <link rel="stylesheet" href="/gulu/assets/css/0.styles.19012039.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/gulu/" class="home-link router-link-active"><!----> <span class="site-name">Biker UI</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/gulu/" class="nav-link">Home</a></div><div class="nav-item"><a href="/gulu/components/" class="nav-link router-link-active">文档</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/gulu/" class="nav-link">Home</a></div><div class="nav-item"><a href="/gulu/components/" class="nav-link router-link-active">文档</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading open"><span>组件</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/gulu/components/button.html" class="sidebar-link">Button 按钮</a></li><li><a href="/gulu/components/input.html" class="sidebar-link">Input 输入框</a></li><li><a href="/gulu/components/toast.html" class="active sidebar-link">Toast 弹窗</a></li><li><a href="/gulu/components/grid.html" class="sidebar-link">Grid 网格</a></li><li><a href="/gulu/components/popover.html" class="sidebar-link">Popover 弹出框</a></li><li><a href="/gulu/components/tab.html" class="sidebar-link">Tab 标签</a></li><li><a href="/gulu/components/layout.html" class="sidebar-link">Layout 默认布局</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="弹窗"><a href="#弹窗" aria-hidden="true" class="header-anchor">#</a> 弹窗</h1> <!----> <div class="language-html extra-class"><pre class="language-html"><code>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- tipMsg, toastPosition, autoClose, autoCloseDelay,closeText, enableHTML --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>g-button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>toast('middle toast', 'middle', false, 0, '关闭', false)<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>middle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>g-button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>g-button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>toast('top toast', 'top', true, 10,'关闭', false)<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>top<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>g-button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>g-button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>toast('&lt;i&gt;bottom toast&lt;/i&gt;', 'bottom', false, 10,'关闭', true)<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>bottom<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>g-button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token keyword">import</span> Plugin <span class="token keyword">from</span> <span class="token string">'../../../src/plugin.js'</span>
+<span class="token keyword">import</span> Button <span class="token keyword">from</span> <span class="token string">&quot;../../../src/button&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Plugin<span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'g-button'</span><span class="token punctuation">:</span> Button
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 关闭taost时的回调函数</span>
+    <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;已经关闭&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">toast</span><span class="token punctuation">(</span>tipMsg<span class="token punctuation">,</span> toastPosition<span class="token punctuation">,</span> autoClose<span class="token punctuation">,</span> autoCloseDelay <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">,</span> closeText<span class="token punctuation">,</span> enableHTML<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$toast</span><span class="token punctuation">(</span>tipMsg<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        toastPosition<span class="token punctuation">,</span>
+        autoClose<span class="token punctuation">,</span>
+        autoCloseDelay<span class="token punctuation">,</span>
+        closeButton<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          text<span class="token punctuation">:</span> closeText<span class="token punctuation">,</span>
+          callback<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>test<span class="token punctuation">,</span>
+          enableHTML
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><table><thead><tr><th>参数</th> <th>说明</th> <th>类型</th> <th style="text-align:center">默认值</th> <th>可选值</th></tr></thead> <tbody><tr><td>autoClose</td> <td>是否自动关闭</td> <td>Boolean</td> <td style="text-align:center">true</td> <td></td></tr> <tr><td>autoCloseDelay</td> <td>自动关闭延迟时间</td> <td>Number (单位:s)</td> <td style="text-align:center">2</td> <td></td></tr> <tr><td>closeButton</td> <td>关闭按钮的设置</td> <td>Object</td> <td style="text-align:center"></td> <td></td></tr> <tr><td>toastPosition</td> <td>显示位置</td> <td>String</td> <td style="text-align:center">top</td> <td>top,middle,bottom</td></tr></tbody></table> <p>其中<code>closeButton{}</code>可选项为:</p> <ul><li>text 关闭按钮文字</li> <li>callback 关闭回调</li> <li>enableHTML 是否支持HTML Boolean</li></ul></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/gulu/components/input.html" class="prev">
+          Input 输入框
+        </a></span> <span class="next"><a href="/gulu/components/grid.html">
+          Grid 网格
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/gulu/assets/js/app.3352c8cd.js" defer></script><script src="/gulu/assets/js/22.16357e3b.js" defer></script>
+  </body>
+</html>
