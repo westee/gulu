@@ -1,6 +1,6 @@
 <template>
   <div>
-    <g-tab selected="society">
+    <g-tab :selected="selectedName">
       <g-tab-head>
         <g-tab-item name="society">社会</g-tab-item>
         <g-tab-item name="sports">运动</g-tab-item>
@@ -21,7 +21,7 @@ import TabPanel from "../../../src/tabs-panel";
 export default {
   data() {
     return {
-      selected: "society"
+      selectedName: "society"
     }
   },
   components: {
