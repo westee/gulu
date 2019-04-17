@@ -26,7 +26,7 @@
         } */
 
         #app {
-            /* margin: 20px; */
+            margin: 20px;
         }
 
         body {
@@ -36,17 +36,6 @@
     <style>
         img {
             width: 100%;
-        }
-
-        .demobox {
-            background: cyan;
-            border: 1px solid red;
-            min-height: 50px;
-
-        }
-
-        .demobox .col {
-            width: 50px;
         }
 
         .logo-wrapper {
@@ -64,8 +53,10 @@
 </head>
 
 <body>
-    <div id="app" style="  padding: 100px 0 0 100px;">
+    <div id="app" style="">
+            <g-cascader :district-source="districtData">
 
+            </g-cascader>
     </div>
 
     <script src="./src/app.js"></script>

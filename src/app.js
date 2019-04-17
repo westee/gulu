@@ -25,6 +25,9 @@ import TabsHead from './tabs-head'
 
 import Popover from './popover'
 
+import Cascader from './cascader'
+import CascaderItem from './cascader-item'
+
 Chai.use(ChaiSpies)
 Vue.use(plugin)
 
@@ -46,7 +49,9 @@ let arr = {
     'g-tabs-panel': TabsPanel,
     'g-tabs-head': TabsHead,
     'g-tabs-body': TabsBody,
-    'g-popover': Popover
+    'g-popover': Popover,
+    'g-cascader': Cascader,
+    'g-cascader-item': CascaderItem
 }
 for (let i in arr) {
     Vue.component(i, arr[i])
@@ -55,60 +60,66 @@ for (let i in arr) {
 new Vue({
     el: '#app',
     data: {
-        selectedTabs: 'men'
+        districtData: [{
+            name: '山东',
+            children: [{
+                    name: '济南',
+                    children: [{
+                            name: '历城区'
+                        },
+                        {
+                            name: '历下区'
+                        },
+                        {
+                            name: '市中区'
+                        }
+                    ]
+                },
+                {
+                    name: '青岛',
+                    children: [{
+                            name: '黄岛区'
+                        },
+                        {
+                            name: '胶州区'
+                        },
+                        {
+                            name: '平度市'
+                        }
+                    ]
+                }
+            ]
+        }, {
+            name: '浙江',
+            children: [{
+                    name: '杭州',
+                    children: [{
+                            name: '上城区'
+                        },
+                        {
+                            name: '下城区'
+                        },
+                        {
+                            name: '江干'
+                        }
+                    ]
+                },
+                {
+                    name: '嘉兴',
+                    children: [{
+                            name: '南湖区'
+                        },
+                        {
+                            name: '秀洲区'
+                        },
+                        {
+                            name: '海宁县'
+                        }
+                    ]
+                }
+            ]
+        }]
     },
-    created() {
-       
-        setTimeout(() => {
-            this.msg = 159487
-        }, 1000)
-    },
-    methods: {
-        xxx(val){
-            console.log(val)
-        },
-        inputChange(e) {
-            this.$emit('change', e.target.value)
-        },
-        showToast2() {
-            console.log(this)
-            this.$toast(`${Math.random()}`, {
-                toastPosition: 'middle',
-                autoClose: false,
-                closeButton: {
-                    text: '关闭',
-                    callback(toast) {
-                        toast.test()
-                    },
-                    enable: false
-                }
-            })
-        },
-        showToast3() {
-            this.$toast(`${Math.random()}`, {
-                toastPosition: 'bottom',
-                autoClose: false,
-                closeButton: {
-                    text: '关闭',
-                    callback(toast) {
-                        toast.test()
-                    },
-                    enable: false
-                }
-            })
-        },
-        showToast() {
-            this.$toast(`${Math.random()}`, {
-                toastPosition: 'top',
-                autoClose: false,
-                closeButton: {
-                    text: '关闭',
-                    callback(toast) {
-                        toast.test()
-                    },
-                    enable: false
-                }
-            })
-        }
-    }
+    created() {},
+    methods: {}
 })
