@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cascader-item">
     {{sourceData.name}}
     <cascaderItem
       v-if="sourceData.children"
@@ -21,4 +21,8 @@ const cascaderItem = {
 export default cascaderItem;
 </script>
 <style lang='scss' scoped>
+.cascader-item{
+  margin: 10px;
+  border: 1px solid red;  
+}
 </style>
