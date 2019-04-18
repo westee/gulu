@@ -4,30 +4,7 @@
       <slot></slot>
     </div>
     <div class="popover" v-show="popoverVisible">
-      <!-- 第一级 -->
-      <div class="level1">
-        <div
-          v-for="(item1, index) in districtSource"
-          :key="index"
-          @click="level2Selected = item1"
-        >{{item1.name}}</div>
-      </div>
-      <!-- 第二级 -->
-      <div class="level2">
-        {{level2Data.name}}
-        <div
-          v-for="(item2, index2) in level2Data"
-          :key="index2"
-          @click="level3Selected = item2"
-        >{{item2.name}}</div>
-      </div>
-      <div class="level3">
-        <div v-for="(item3, index3) in level3Data" :key="index3">{{item3.name}}</div>
-      </div>
-      <!-- <div v-for="item in districtSource">
-        <cascader-item :sourceData="item">
-        </cascader-item>
-      </div>-->
+      <cascader-item :items="districtSource"></cascader-item>
     </div>
   </div>
 </template>
