@@ -4,7 +4,7 @@
       <slot></slot>
     </div>
     <div class="popover" v-show="popoverVisible">
-      <cascader-item :items="districtSource" :popover-height="popoverHeight"></cascader-item>
+      <cascader-item :items="source" :popover-height="popoverHeight"></cascader-item>
     </div>
   </div>
 </template>
@@ -12,11 +12,12 @@
 import CascaderItem from "./cascader-item";
 export default {
   props: {
-    districtSource: {
+    source: {
       type: Array
     },
     popoverHeight:{
-      type: Number
+      type: Number,
+      default: 100
     }
   },
   data() {
