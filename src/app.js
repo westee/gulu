@@ -118,7 +118,8 @@ new Vue({
                     ]
                 }
             ]
-        }]
+        }],
+        height: 100
     },
     created() {},
     methods: {}

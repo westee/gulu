@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add common.scss
 
 PATH: 
-  C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Android;C:\Windows\System32;C:\Program Files\dotnet\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64\Scripts;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64;D:\Program Files\Microsoft VS Code\bin;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\Git\cmd;D:\Program Files\Git\mingw64\bin;D:\Program Files\Git\usr\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs\;C:\Ruby24-x64\bin;C:\Users\wang\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64\Scripts;;D:\Program Files\Microsoft VS Code\bin;C:\Users\wang\AppData\Local\Yarn\bin;D:\软件\webstorm\WebStorm 2018.1.5\bin;;C:\Users\wang\AppData\Roaming\npm
+  C:\Users\wang\AppData\Roaming\npm\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;E:\vue-rails\simple\node_modules\.bin;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Android;C:\Windows\System32;C:\Program Files\dotnet\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64\Scripts;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64;D:\Program Files\Microsoft VS Code\bin;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\Git\cmd;D:\Program Files\Git\mingw64\bin;D:\Program Files\Git\usr\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs\;C:\Ruby24-x64\bin;C:\Users\wang\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64\Scripts;;D:\Program Files\Microsoft VS Code\bin;C:\Users\wang\AppData\Local\Yarn\bin;D:\软件\webstorm\WebStorm 2018.1.5\bin;;C:\Users\wang\AppData\Roaming\npm
 
 Yarn version: 
   1.9.4
@@ -14,7 +14,8 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, scandir 'E:\vue-rails\simple\node_modules\@types'
+  Error: getaddrinfo ENOTFOUND registry.npm.taobao.org registry.npm.taobao.org:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:57:26)
 
 npm manifest: 
   {
@@ -62,6 +63,7 @@ npm manifest:
       "parcel": "^1.9.2",
       "parcel-bundler": "^1.11.0",
       "puppeteer": "^1.5.0",
+      "sass-loader": "^7.1.0",
       "sinon": "^7.2.3",
       "sinon-chai": "^3.3.0",
       "vue-template-compiler": "^2.6.6",
@@ -1961,11 +1963,11 @@ Lockfile:
   
   babel-helper-vue-jsx-merge-props@^2.0.3:
     version "2.0.3"
-    resolved "http://registry.npm.taobao.org/babel-helper-vue-jsx-merge-props/download/babel-helper-vue-jsx-merge-props-2.0.3.tgz#22aebd3b33902328e513293a8e4992b384f9f1b6"
+    resolved "http://registry.npm.taobao.org/babel-helper-vue-jsx-merge-props/download/babel-helper-vue-jsx-merge-props-2.0.3.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fbabel-helper-vue-jsx-merge-props%2Fdownload%2Fbabel-helper-vue-jsx-merge-props-2.0.3.tgz#22aebd3b33902328e513293a8e4992b384f9f1b6"
   
   babel-loader@8.0.0-beta.3:
     version "8.0.0-beta.3"
-    resolved "http://registry.npm.taobao.org/babel-loader/download/babel-loader-8.0.0-beta.3.tgz#49efeea6e8058d5af860a18a6de88b8c1450645b"
+    resolved "http://registry.npm.taobao.org/babel-loader/download/babel-loader-8.0.0-beta.3.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fbabel-loader%2Fdownload%2Fbabel-loader-8.0.0-beta.3.tgz#49efeea6e8058d5af860a18a6de88b8c1450645b"
     dependencies:
       find-cache-dir "^1.0.0"
       loader-utils "^1.0.2"
@@ -2606,6 +2608,15 @@ Lockfile:
       strip-ansi "^3.0.1"
       wrap-ansi "^2.0.0"
   
+  clone-deep@^2.0.1:
+    version "2.0.2"
+    resolved "http://registry.npm.taobao.org/clone-deep/download/clone-deep-2.0.2.tgz#00db3a1e173656730d1188c3d6aced6d7ea97713"
+    dependencies:
+      for-own "^1.0.0"
+      is-plain-object "^2.0.4"
+      kind-of "^6.0.0"
+      shallow-clone "^1.0.0"
+  
   clone@^1.0.2:
     version "1.0.4"
     resolved "http://registry.npm.taobao.org/clone/download/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
@@ -2703,7 +2714,7 @@ Lockfile:
   
   colors@~1.1.2:
     version "1.1.2"
-    resolved "http://registry.npm.taobao.org/colors/download/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
+    resolved "http://registry.npm.taobao.org/colors/download/colors-1.1.2.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fcolors%2Fdownload%2Fcolors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
   
   combined-stream@^1.0.6, combined-stream@~1.0.6:
     version "1.0.7"
@@ -2721,7 +2732,7 @@ Lockfile:
   
   commander@2.17.x:
     version "2.17.1"
-    resolved "http://registry.npm.taobao.org/commander/download/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
+    resolved "http://registry.npm.taobao.org/commander/download/commander-2.17.1.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fcommander%2Fdownload%2Fcommander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   
   commander@^2.11.0, commander@^2.15.1, commander@^2.19.0, commander@^2.9.0:
     version "2.20.0"
@@ -2729,7 +2740,7 @@ Lockfile:
   
   commander@~2.19.0:
     version "2.19.0"
-    resolved "http://registry.npm.taobao.org/commander/download/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
+    resolved "http://registry.npm.taobao.org/commander/download/commander-2.19.0.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fcommander%2Fdownload%2Fcommander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
   
   common-tags@^1.4.0:
     version "1.8.0"
@@ -2997,7 +3008,7 @@ Lockfile:
   
   css-loader@^0.28.11:
     version "0.28.11"
-    resolved "http://registry.npm.taobao.org/css-loader/download/css-loader-0.28.11.tgz#c3f9864a700be2711bb5a2462b2389b1a392dab7"
+    resolved "http://registry.npm.taobao.org/css-loader/download/css-loader-0.28.11.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fcss-loader%2Fdownload%2Fcss-loader-0.28.11.tgz#c3f9864a700be2711bb5a2462b2389b1a392dab7"
     dependencies:
       babel-code-frame "^6.26.0"
       css-selector-tokenizer "^0.7.0"
@@ -3327,7 +3338,7 @@ Lockfile:
   
   deepmerge@^1.5.2:
     version "1.5.2"
-    resolved "http://registry.npm.taobao.org/deepmerge/download/deepmerge-1.5.2.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fdeepmerge%2Fdownload%2Fdeepmerge-1.5.2.tgz#10499d868844cdad4fee0842df8c7f6f0c95a753"
+    resolved "http://registry.npm.taobao.org/deepmerge/download/deepmerge-1.5.2.tgz#10499d868844cdad4fee0842df8c7f6f0c95a753"
   
   defaults@^1.0.3:
     version "1.0.3"
@@ -4052,6 +4063,10 @@ Lockfile:
     dependencies:
       debug "^3.2.6"
   
+  for-in@^0.1.3:
+    version "0.1.8"
+    resolved "http://registry.npm.taobao.org/for-in/download/for-in-0.1.8.tgz#d8773908e31256109952b1fdb9b3fa867d2775e1"
+  
   for-in@^1.0.1, for-in@^1.0.2:
     version "1.0.2"
     resolved "http://registry.npm.taobao.org/for-in/download/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
@@ -4059,6 +4074,12 @@ Lockfile:
   for-own@^0.1.4:
     version "0.1.5"
     resolved "http://registry.npm.taobao.org/for-own/download/for-own-0.1.5.tgz#5265c681a4f294dabbf17c9509b6763aa84510ce"
+    dependencies:
+      for-in "^1.0.1"
+  
+  for-own@^1.0.0:
+    version "1.0.0"
+    resolved "http://registry.npm.taobao.org/for-own/download/for-own-1.0.0.tgz#c63332f415cedc4b04dbfe70cf836494c53cb44b"
     dependencies:
       for-in "^1.0.1"
   
@@ -4103,7 +4124,7 @@ Lockfile:
   
   fs-extra@^4.0.2:
     version "4.0.3"
-    resolved "http://registry.npm.taobao.org/fs-extra/download/fs-extra-4.0.3.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Ffs-extra%2Fdownload%2Ffs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
+    resolved "http://registry.npm.taobao.org/fs-extra/download/fs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
     dependencies:
       graceful-fs "^4.1.2"
       jsonfile "^4.0.0"
@@ -4111,7 +4132,7 @@ Lockfile:
   
   fs-extra@^5.0.0:
     version "5.0.0"
-    resolved "http://registry.npm.taobao.org/fs-extra/download/fs-extra-5.0.0.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Ffs-extra%2Fdownload%2Ffs-extra-5.0.0.tgz#414d0110cdd06705734d055652c5411260c31abd"
+    resolved "http://registry.npm.taobao.org/fs-extra/download/fs-extra-5.0.0.tgz#414d0110cdd06705734d055652c5411260c31abd"
     dependencies:
       graceful-fs "^4.1.2"
       jsonfile "^4.0.0"
@@ -4243,7 +4264,7 @@ Lockfile:
   
   glob@7.0.x:
     version "7.0.6"
-    resolved "http://registry.npm.taobao.org/glob/download/glob-7.0.6.tgz#211bafaf49e525b8cd93260d14ab136152b3f57a"
+    resolved "http://registry.npm.taobao.org/glob/download/glob-7.0.6.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fglob%2Fdownload%2Fglob-7.0.6.tgz#211bafaf49e525b8cd93260d14ab136152b3f57a"
     dependencies:
       fs.realpath "^1.0.0"
       inflight "^1.0.4"
@@ -5071,7 +5092,7 @@ Lockfile:
   
   joi@^11.1.1:
     version "11.4.0"
-    resolved "http://registry.npm.taobao.org/joi/download/joi-11.4.0.tgz#f674897537b625e9ac3d0b7e1604c828ad913ccb"
+    resolved "http://registry.npm.taobao.org/joi/download/joi-11.4.0.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fjoi%2Fdownload%2Fjoi-11.4.0.tgz#f674897537b625e9ac3d0b7e1604c828ad913ccb"
     dependencies:
       hoek "4.x.x"
       isemail "3.x.x"
@@ -5112,7 +5133,7 @@ Lockfile:
   
   js-yaml@~3.7.0:
     version "3.7.0"
-    resolved "http://registry.npm.taobao.org/js-yaml/download/js-yaml-3.7.0.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fjs-yaml%2Fdownload%2Fjs-yaml-3.7.0.tgz#5c967ddd837a9bfdca5f2de84253abe8a1c03b80"
+    resolved "http://registry.npm.taobao.org/js-yaml/download/js-yaml-3.7.0.tgz#5c967ddd837a9bfdca5f2de84253abe8a1c03b80"
     dependencies:
       argparse "^1.0.7"
       esprima "^2.6.0"
@@ -5469,7 +5490,7 @@ Lockfile:
       json5 "^0.5.0"
       object-assign "^4.0.1"
   
-  loader-utils@^1.0.2, loader-utils@^1.1.0:
+  loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0:
     version "1.2.3"
     resolved "http://registry.npm.taobao.org/loader-utils/download/loader-utils-1.2.3.tgz#1ff5dc6911c9f0a062531a4c04b609406108c2c7"
     dependencies:
@@ -5522,6 +5543,10 @@ Lockfile:
   lodash.sortby@^4.7.0:
     version "4.7.0"
     resolved "http://registry.npm.taobao.org/lodash.sortby/download/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
+  
+  lodash.tail@^4.1.1:
+    version "4.1.1"
+    resolved "http://registry.npm.taobao.org/lodash.tail/download/lodash.tail-4.1.1.tgz#d2333a36d9e7717c8ad2f7cacafec7c32b444664"
   
   lodash.template@^4.4.0:
     version "4.4.0"
@@ -5740,7 +5765,7 @@ Lockfile:
   
   meow@^5.0.0:
     version "5.0.0"
-    resolved "http://registry.npm.taobao.org/meow/download/meow-5.0.0.tgz#dfc73d63a9afc714a5e371760eb5c88b91078aa4"
+    resolved "http://registry.npm.taobao.org/meow/download/meow-5.0.0.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fmeow%2Fdownload%2Fmeow-5.0.0.tgz#dfc73d63a9afc714a5e371760eb5c88b91078aa4"
     dependencies:
       camelcase-keys "^4.0.0"
       decamelize-keys "^1.0.0"
@@ -5851,7 +5876,7 @@ Lockfile:
   
   mini-css-extract-plugin@0.4.1:
     version "0.4.1"
-    resolved "http://registry.npm.taobao.org/mini-css-extract-plugin/download/mini-css-extract-plugin-0.4.1.tgz#d2bcf77bb2596b8e4bd9257e43d3f9164c2e86cb"
+    resolved "http://registry.npm.taobao.org/mini-css-extract-plugin/download/mini-css-extract-plugin-0.4.1.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fmini-css-extract-plugin%2Fdownload%2Fmini-css-extract-plugin-0.4.1.tgz#d2bcf77bb2596b8e4bd9257e43d3f9164c2e86cb"
     dependencies:
       "@webpack-contrib/schema-utils" "^1.0.0-beta.0"
       loader-utils "^1.1.0"
@@ -5939,6 +5964,13 @@ Lockfile:
     dependencies:
       for-in "^1.0.2"
       is-extendable "^1.0.1"
+  
+  mixin-object@^2.0.1:
+    version "2.0.1"
+    resolved "http://registry.npm.taobao.org/mixin-object/download/mixin-object-2.0.1.tgz#4fb949441dab182540f1fe035ba60e1947a5e57e"
+    dependencies:
+      for-in "^0.1.3"
+      is-extendable "^0.1.1"
   
   mkdirp@0.3.0:
     version "0.3.0"
@@ -7986,6 +8018,17 @@ Lockfile:
       scss-tokenizer "^0.2.3"
       yargs "^7.0.0"
   
+  sass-loader@^7.1.0:
+    version "7.1.0"
+    resolved "http://registry.npm.taobao.org/sass-loader/download/sass-loader-7.1.0.tgz#16fd5138cb8b424bf8a759528a1972d72aad069d"
+    dependencies:
+      clone-deep "^2.0.1"
+      loader-utils "^1.0.1"
+      lodash.tail "^4.1.1"
+      neo-async "^2.5.0"
+      pify "^3.0.0"
+      semver "^5.5.0"
+  
   sax@0.5.x:
     version "0.5.8"
     resolved "http://registry.npm.taobao.org/sax/download/sax-0.5.8.tgz#d472db228eb331c2506b0e8c15524adb939d12c1"
@@ -8119,6 +8162,14 @@ Lockfile:
     dependencies:
       inherits "^2.0.1"
       safe-buffer "^5.0.1"
+  
+  shallow-clone@^1.0.0:
+    version "1.0.0"
+    resolved "http://registry.npm.taobao.org/shallow-clone/download/shallow-clone-1.0.0.tgz#4480cd06e882ef68b2ad88a3ea54832e2c48b571"
+    dependencies:
+      is-extendable "^0.1.1"
+      kind-of "^5.0.0"
+      mixin-object "^2.0.1"
   
   shallow-copy@~0.0.1:
     version "0.0.1"
@@ -9023,7 +9074,7 @@ Lockfile:
   
   update-notifier@^2.3.0:
     version "2.5.0"
-    resolved "http://registry.npm.taobao.org/update-notifier/download/update-notifier-2.5.0.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fupdate-notifier%2Fdownload%2Fupdate-notifier-2.5.0.tgz#d0744593e13f161e406acb1d9408b72cad08aff6"
+    resolved "http://registry.npm.taobao.org/update-notifier/download/update-notifier-2.5.0.tgz#d0744593e13f161e406acb1d9408b72cad08aff6"
     dependencies:
       boxen "^1.2.1"
       chalk "^2.0.1"
@@ -9177,8 +9228,8 @@ Lockfile:
       vue-style-loader "^4.1.0"
   
   vue-router@^3.0.1:
-    version "3.0.3"
-    resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-3.0.3.tgz#370ca607475c45a1cfab2d9d2ac846feab1c534c"
+    version "3.0.4"
+    resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-3.0.4.tgz#d6023e9db64d0b335771f0316c8bde8956f2d75d"
   
   vue-server-renderer@^2.5.16:
     version "2.6.10"

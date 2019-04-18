@@ -1,20 +1,18 @@
 <template>
-  <div class="cascader-item">
-    
-      <!-- 左边 -->
-      <div class="left">
-        <div
-          v-for="(item, index) in items"
-          :key="index"
-          @click="selectedItem = item"
-        >{{item.name}}</div>
-      </div>
-      <!-- 右边 -->
-      <div class="right" v-if="getSubItem">
-        <cascader-item :items="getSubItem">
-        </cascader-item>
-      </div>
-    
+  <div class="cascader-item" :style="{height: popoverHeight+'px'}">
+    <!-- 左边 -->
+    <div class="left">
+      <div
+        class="label"
+        v-for="(item, index) in items"
+        :key="index"
+        @click="selectedItem = item"
+      >{{item.name}}</div>
+    </div>
+    <!-- 右边 -->
+    <div class="right" v-if="getSubItem">
+      <cascader-item :items="getSubItem" :popover-height="popoverHeight"></cascader-item>
+    </div>
   </div>
 </template>
 <script>
@@ -23,31 +21,45 @@ const cascaderItem = {
   props: {
     items: {
       type: Array
+    },
+    popoverHeight: {
+      type: Number
     }
   },
   data() {
     return {
       selectedItem: null
-    }
+    };
   },
   computed: {
     //  获得下一级的数据
-    getSubItem(){
-      if(this.selectedItem && this.selectedItem.children){
-        return this.selectedItem.children
+    getSubItem() {
+      if (this.selectedItem && this.selectedItem.children) {
+        return this.selectedItem.children;
       }
-      return null
+      return null;
     }
-  },
+  }
 };
 export default cascaderItem;
 </script>
 <style lang='scss' scoped>
-.cascader-item{
-  border: 1px solid red;  
+@import "common.scss";
+.cascader-item {
+  // border: 1px solid black;
   display: flex;
-  .right{
-    margin-top: -1px;
+  .right {
+    // margin-top: -1px;
+    height: 100%;
+  }
+  .left {
+    height: 100%;
+    // border: 1px solid $border-color-light;
+    padding: 0.3em 0;
+    @extend .my-shadow;
+    .label {
+      padding: 0.3em 1em;
+    }
   }
 }
 </style>
