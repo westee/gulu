@@ -7,6 +7,8 @@
       <cascader-item
         :items="source"
         :popover-height="popoverHeight"
+        :selected-arr="selectedArr"
+        @update:selectedArr="onSelectedArrChange"
       ></cascader-item>
     </div>
   </div>
@@ -21,6 +23,12 @@ export default {
     popoverHeight: {
       type: Number,
       default: 100
+    },
+    selectedArr: {
+      type: Array,
+      default: () => {
+        return [];
+      }
     }
   },
   data() {
@@ -31,6 +39,17 @@ export default {
   },
   components: {
     cascaderItem: CascaderItem
+  },
+  methods: {
+    // cascader-item组件发来的通知，由于cascader组件的selectedArr也是props值，
+    // 因此他也不能更改，继续通知上一级。
+    onSelectedArrChange(data) {
+      /**
+       * @todo 
+       * 感觉selectedArr名字取得不好，要改
+       */
+      this.$emit('update:selectedArr', data)
+    }
   }
 };
 </script>

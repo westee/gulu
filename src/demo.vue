@@ -1,7 +1,7 @@
 <template>
   <div>
-    <g-button>hi</g-button>
-    <g-cascader :source="districtData"></g-cascader>
+    <div>{{selectedArr}}</div>
+    <g-cascader :source="districtData" :selected-arr="selectedArr" @update:selectedArr="selectedArr = $event"></g-cascader>
   </div>
 </template>
 <script>
@@ -82,8 +82,14 @@ export default {
           ]
         }
       ],
-      height: 100
+      height: 100,
+      selectedArr: []
     };
+  },
+  methods: {
+    test(data) {
+      console.log(data);
+    }
   }
 };
 </script>

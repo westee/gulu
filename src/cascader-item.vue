@@ -2,14 +2,21 @@
   <div class="cascader-item" :style="{ height: popoverHeight + 'px' }">
     <!-- 左边 -->
     <div class="left">
-      <div class="label" v-for="(item, index) in items" :key="index" @click="selectedItem = item">
+      <div class="label" v-for="(item, index) in items" :key="index" 
+      @click="onClickLabel(item)">
         {{ item.name }}
-        <g-icon name="right"></g-icon>
+        <g-icon v-if="item.children" name="right"></g-icon>
       </div>
     </div>
     <!-- 右边 -->
     <div class="right" v-if="getSubItem">
-      <cascader-item :items="getSubItem" :popover-height="popoverHeight"></cascader-item>
+      <cascader-item
+        :items="getSubItem"
+        :popover-height="popoverHeight"
+        :selected-level="selectedLevel+1"
+        :selected-arr="selectedArr"
+        @update:selectedArr="onChangeSelected"
+      ></cascader-item>
     </div>
   </div>
 </template>
@@ -23,23 +30,41 @@ const cascaderItem = {
     },
     popoverHeight: {
       type: Number
+    },
+    // 选中的每一级的数据
+    selectedArr: {
+      type: Array,
+      default: () => []
+    },
+    selectedLevel: {
+      type: Number,
+      default: 0
     }
   },
   components: {
     "g-icon": Icon
   },
-  data() {
-    return {
-      selectedItem: null
-    };
-  },
   computed: {
     //  获得下一级的数据
     getSubItem() {
-      if (this.selectedItem && this.selectedItem.children) {
-        return this.selectedItem.children;
+      let selected = this.selectedArr[this.selectedLevel];
+      if (selected && selected.children) {
+        return selected.children;
       }
       return null;
+    }
+  },
+  methods: {
+    onClickLabel(item) {
+      // 深拷贝selectedArr
+      let deepCopy = JSON.parse(JSON.stringify(this.selectedArr));
+      deepCopy[this.selectedLevel] = item;
+      // console.log(deepCopy)
+      this.$emit("update:selectedArr", deepCopy);
+    },
+    onChangeSelected(newData) {
+      // console.log(newData)
+      this.$emit("update:selectedArr", newData);
     }
   }
 };
@@ -48,7 +73,6 @@ export default cascaderItem;
 <style lang="scss" scoped>
 @import "common.scss";
 .cascader-item {
-  // border: 1px solid black;
   display: flex;
   .right {
     height: 100%;
