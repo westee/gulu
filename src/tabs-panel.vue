@@ -15,7 +15,7 @@ export default {
   },
   props: {
     name: {
-      type: String | Number,
+      type: String,
       required: true
     }
   },
@@ -28,8 +28,8 @@ export default {
   },
   inject: ["eventBus"],
   created() {
-    if (!this.eventBus) return  
-    this.eventBus.$on("update:selected", (name, vm)=> {
+    if (!this.eventBus) return;
+    this.eventBus.$on("update:selected", (name, vm) => {
       if (name === this.name) {
         // console.log('panel'+this.name+'选中');
         this.active = true;
@@ -42,6 +42,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

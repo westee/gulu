@@ -38,7 +38,7 @@ export default {
   created() {},
   mounted() {
     if (!this.$children.length) {
-      console.error('tabs组件必须包含<g-tabs-head>和<g-tabs-body>组件');
+      console.error("tabs组件必须包含<g-tabs-head>和<g-tabs-body>组件");
     }
     // this.$emit('update:selected','测试数据')
     this.$children.forEach(vm => {
@@ -61,5 +61,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

@@ -47,20 +47,20 @@ export default {
       gutter: 0
     };
   },
-  methods:{
+  methods: {
     createClass: function(type, typeStr = "default") {
-        if (!type) {
-          return [];
-        }
-        let arr = [];
-        if (type.col) {
-          arr.push(`col-${typeStr}-${type.col}`);
-        }
-        if (type.offset) {
-          arr.push(`offset-${typeStr}-${type.offset}`);
-        }
-        return arr
+      if (!type) {
+        return [];
       }
+      let arr = [];
+      if (type.col) {
+        arr.push(`col-${typeStr}-${type.col}`);
+      }
+      if (type.offset) {
+        arr.push(`offset-${typeStr}-${type.offset}`);
+      }
+      return arr;
+    }
   },
   computed: {
     //col--列的class
@@ -68,11 +68,11 @@ export default {
       let { coloffset, phone, pad, narrowPc, pc, bigPc } = this;
       return [
         ...this.createClass(coloffset),
-        ...this.createClass(phone, 'phone'),
-        ...this.createClass(pad, 'pad'),
-        ...this.createClass(narrowPc, 'narrowPc'),
-        ...this.createClass(pc, 'pc'),
-        ...this.createClass(bigPc, 'bigPc'),
+        ...this.createClass(phone, "phone"),
+        ...this.createClass(pad, "pad"),
+        ...this.createClass(narrowPc, "narrowPc"),
+        ...this.createClass(pc, "pc"),
+        ...this.createClass(bigPc, "bigPc")
       ];
     },
     // col--列的行内样式

@@ -4,7 +4,7 @@
       class="content-wrapper"
       ref="contentWrapper"
       v-if="visible"
-      :class="{[`position-${position}`]: true}"
+      :class="{ [`position-${position}`]: true }"
     >
       <slot name="content" :closeFn="closePopover"></slot>
     </div>
@@ -15,7 +15,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     position: {
@@ -123,12 +122,12 @@ export default {
   },
   destroyed() {
     if (this.triggerType === "click" && this.$refs.popover) {
-        this.$refs.popover.removeEventListener("click", this.clickPopover);
-      } else if(this.$refs.popover){
-        this.$refs.popover.removeEventListener("mouseenter", this.displayPopover);
-        this.$refs.popover.removeEventListener("mouseleave", this.closePopover);
-      }
-  },
+      this.$refs.popover.removeEventListener("click", this.clickPopover);
+    } else if (this.$refs.popover) {
+      this.$refs.popover.removeEventListener("mouseenter", this.displayPopover);
+      this.$refs.popover.removeEventListener("mouseleave", this.closePopover);
+    }
+  }
 };
 </script>
 

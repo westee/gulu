@@ -1,15 +1,15 @@
 <template>
-  <div :class="{'wrapper': true,'error': error} ">
+  <div :class="{ wrapper: true, error: error }">
     <input
       :value="value"
       :disabled="disabled"
       v-bind:readonly="readonly"
       v-on:change="$emit('change', $event.target.value)"
       type="text"
-      v-on:blur="$emit('blur', $event.target.value  )"
+      v-on:blur="$emit('blur', $event.target.value)"
       v-on:input="$emit('input', $event.target.value)"
       v-on:focus="$emit('focus', $event.target.value)"
-    >
+    />
     <!--浏览器原生对象$event -->
     <template>
       <Icon name="warn" v-if="error"></Icon>
@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'common.scss';
+@import "common.scss";
 * {
   box-sizing: border-box;
 }

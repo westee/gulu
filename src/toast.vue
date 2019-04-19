@@ -4,7 +4,9 @@
       <slot v-if="!closeButton.enableHTML"></slot>
       <!-- 支持html -->
       <div v-else-if="closeButton.enableHTML" v-html="$slots.default"></div>
-      <span class="close" v-if="closeButton" @click="closeToastNow">{{closeButton.text}}</span>
+      <span class="close" v-if="closeButton" @click="closeToastNow">{{
+        closeButton.text
+      }}</span>
     </div>
   </div>
 </template>
@@ -80,8 +82,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'common.scss';
-*{
+@import "common.scss";
+* {
   box-sizing: border-box;
 }
 .wrapper {

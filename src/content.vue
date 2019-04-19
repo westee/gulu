@@ -5,14 +5,11 @@
 </template>
 
 <script>
-export default {
-  
-}
+export default {};
 </script>
 
 <style>
-  .content{
-    flex-grow: 1;
-  }
+.content {
+  flex-grow: 1;
+}
 </style>
-

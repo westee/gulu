@@ -1,5 +1,10 @@
 <template>
-  <div class="tabs-item" @click="clickItem" :class="itemClass" :data-name="name">
+  <div
+    class="tabs-item"
+    @click="clickItem"
+    :class="itemClass"
+    :data-name="name"
+  >
     <slot></slot>
   </div>
 </template>
@@ -18,7 +23,7 @@ export default {
       default: false
     },
     name: {
-      type: String | Number,
+      type: String,
       required: true
     }
   },

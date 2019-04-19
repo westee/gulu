@@ -1,13 +1,11 @@
 <template>
-  <div class="cascader-item" :style="{height: popoverHeight+'px'}">
+  <div class="cascader-item" :style="{ height: popoverHeight + 'px' }">
     <!-- 左边 -->
     <div class="left">
-      <div
-        class="label"
-        v-for="(item, index) in items"
-        :key="index"
-        @click="selectedItem = item"
-      >{{item.name}}</div>
+      <div class="label" v-for="(item, index) in items" :key="index" @click="selectedItem = item">
+        {{ item.name }}
+        <g-icon name="right"></g-icon>
+      </div>
     </div>
     <!-- 右边 -->
     <div class="right" v-if="getSubItem">
@@ -16,6 +14,7 @@
   </div>
 </template>
 <script>
+import Icon from "./icon";
 const cascaderItem = {
   name: "cascaderItem",
   props: {
@@ -25,6 +24,9 @@ const cascaderItem = {
     popoverHeight: {
       type: Number
     }
+  },
+  components: {
+    "g-icon": Icon
   },
   data() {
     return {
@@ -43,22 +45,28 @@ const cascaderItem = {
 };
 export default cascaderItem;
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import "common.scss";
 .cascader-item {
   // border: 1px solid black;
   display: flex;
   .right {
-    // margin-top: -1px;
     height: 100%;
+    border-left: 1px solid $border-color-light;
   }
   .left {
     height: 100%;
-    // border: 1px solid $border-color-light;
     padding: 0.3em 0;
-    @extend .my-shadow;
     .label {
       padding: 0.3em 1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      .icon {
+        transform: scale(0.6);
+        margin-left: auto;
+      }
     }
   }
 }

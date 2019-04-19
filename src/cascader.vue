@@ -4,7 +4,10 @@
       <slot></slot>
     </div>
     <div class="popover" v-show="popoverVisible">
-      <cascader-item :items="source" :popover-height="popoverHeight"></cascader-item>
+      <cascader-item
+        :items="source"
+        :popover-height="popoverHeight"
+      ></cascader-item>
     </div>
   </div>
 </template>
@@ -15,7 +18,7 @@ export default {
     source: {
       type: Array
     },
-    popoverHeight:{
+    popoverHeight: {
       type: Number,
       default: 100
     }
@@ -23,7 +26,7 @@ export default {
   data() {
     return {
       // 是否弹出选择栏
-      popoverVisible: false,
+      popoverVisible: false
     };
   },
   components: {
@@ -31,9 +34,11 @@ export default {
   }
 };
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import "common.scss";
 .cascader {
+  display: inline-block;
+  position: relative;
   .trigger {
     height: $button-height;
     border: 1px solid black;
@@ -41,6 +46,9 @@ export default {
   }
   .popover {
     display: flex;
+    @extend .my-shadow;
+    position: absolute;
+    top: 100%;
   }
 }
 </style>

@@ -6,7 +6,6 @@
 
 <script>
 export default {
-  name: 'g-sider',
-  
-}
+  name: "g-sider"
+};
 </script>

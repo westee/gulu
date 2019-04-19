@@ -6,11 +6,9 @@
 
 <script>
 export default {
-  name: 'g-tabs-body',
-    inject: ['eventBus'],
-}
+  name: "g-tabs-body",
+  inject: ["eventBus"]
+};
 </script>
 
-<style lang="scss">
-  
-</style>
+<style lang="scss"></style>
