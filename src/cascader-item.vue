@@ -2,8 +2,7 @@
   <div class="cascader-item" :style="{ height: popoverHeight + 'px' }">
     <!-- 左边 -->
     <div class="left">
-      <div class="label" v-for="(item, index) in items" :key="index" 
-      @click="onClickLabel(item)">
+      <div class="label" v-for="(item, index) in items" :key="index" @click="onClickLabel(item)">
         {{ item.name }}
         <g-icon v-if="item.children" name="right"></g-icon>
       </div>
@@ -59,11 +58,11 @@ const cascaderItem = {
       // 深拷贝selectedArr
       let deepCopy = JSON.parse(JSON.stringify(this.selectedArr));
       deepCopy[this.selectedLevel] = item;
-      // console.log(deepCopy)
+      // 点击当前选项后把这一项之后的内容全部清除，目的是点击前面
+      deepCopy.splice(this.selectedLevel + 1);
       this.$emit("update:selectedArr", deepCopy);
     },
     onChangeSelected(newData) {
-      // console.log(newData)
       this.$emit("update:selectedArr", newData);
     }
   }
@@ -87,6 +86,7 @@ export default cascaderItem;
       justify-content: center;
       align-items: center;
       white-space: nowrap;
+      cursor: pointer;
       .icon {
         transform: scale(0.6);
         margin-left: auto;

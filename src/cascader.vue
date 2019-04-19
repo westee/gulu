@@ -1,7 +1,8 @@
 <template>
   <div class="cascader">
     <div class="trigger" @click="popoverVisible = !popoverVisible">
-      <slot></slot>
+      <!-- <slot></slot> -->
+      {{getResult || '&nbsp;'}}
     </div>
     <div class="popover" v-show="popoverVisible">
       <cascader-item
@@ -45,10 +46,20 @@ export default {
     // 因此他也不能更改，继续通知上一级。
     onSelectedArrChange(data) {
       /**
-       * @todo 
+       * @todo
        * 感觉selectedArr名字取得不好，要改
        */
-      this.$emit('update:selectedArr', data)
+      this.$emit("update:selectedArr", data);
+    }
+  },
+  computed: {
+    getResult() {
+      let result = this.selectedArr
+        .map(item => {
+          return item.name;
+        })
+        .join("/");
+      return result;
     }
   }
 };
@@ -59,9 +70,15 @@ export default {
   display: inline-block;
   position: relative;
   .trigger {
-    height: $button-height;
+    height: $height;
     border: 1px solid black;
-    width: 100px;
+    min-width: 150px;
+    border-radius: $border-radius;
+    border-color: $border-color;
+    display: flex;
+    align-items: center;
+    padding: .05em 1em;
+    font-size: $font-size;
   }
   .popover {
     display: flex;
