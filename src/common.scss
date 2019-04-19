@@ -15,3 +15,6 @@ $border-color-light: lighten($border-color,10%);
 .my-shadow{
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
 }
+*{
+  box-sizing: border-box;
+}

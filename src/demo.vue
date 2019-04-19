@@ -1,12 +1,25 @@
 <template>
   <div>
-    <div>{{selectedArr}}</div>
-    <g-cascader :source="districtData" :selected-arr="selectedArr" @update:selectedArr="selectedArr = $event"></g-cascader>
+    <g-cascader
+      :source="sourceData"
+      :selectedArr.sync="selectedArr"
+      @update:selectedArr="xxx"
+      :load-data="loadData"
+    ></g-cascader>
   </div>
 </template>
 <script>
 import Button from "./button";
 import Cascader from "./cascader";
+import db from "./district.js";
+function ajax(id = 0) {
+  return new Promise(function(resolve, reject) {
+    let result = db.filter(item => {
+      return item.child_id === id;
+    });
+    resolve(result);
+  });
+}
 export default {
   components: {
     "g-button": Button,
@@ -14,82 +27,36 @@ export default {
   },
   data() {
     return {
-      districtData: [
-        {
-          name: "山东",
-          children: [
-            {
-              name: "济南",
-              children: [
-                {
-                  name: "历城区"
-                },
-                {
-                  name: "历下区"
-                },
-                {
-                  name: "市中区"
-                }
-              ]
-            },
-            {
-              name: "青岛",
-              children: [
-                {
-                  name: "黄岛区"
-                },
-                {
-                  name: "胶州区"
-                },
-                {
-                  name: "平度市"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          name: "浙江",
-          children: [
-            {
-              name: "杭州",
-              children: [
-                {
-                  name: "上城区"
-                },
-                {
-                  name: "下城区"
-                },
-                {
-                  name: "江干"
-                }
-              ]
-            },
-            {
-              name: "嘉兴",
-              children: [
-                {
-                  name: "南湖区"
-                },
-                {
-                  name: "秀洲区"
-                },
-                {
-                  name: "海宁县"
-                }
-              ]
-            }
-          ]
-        }
-      ],
+      sourceData: [], // 源数据
       height: 100,
       selectedArr: []
     };
   },
   methods: {
-    test(data) {
-      console.log(data);
+    loadData({id},updateSource) {
+      ajax(id).then(result => {
+        updateSource(result)
+      });
+    },
+    /**
+     * data是选中的下一集数据
+     */
+    xxx(data) {
+      let id = data[0].id;
+      ajax(id).then(resolve => {
+        let lastSelected = this.sourceData.filter(item => item.id === id)[0];
+        this.$set(lastSelected, "children", resolve);
+        // console.log(0)
+        // console.log(lastSelected)
+        // lastSelected.children = resolve;
+        // console.log(1)
+      });
     }
+  },
+  created() {
+    ajax(0).then(resolve => {
+      this.sourceData = resolve;
+    });
   }
 };
 </script>

@@ -80,6 +80,7 @@ export default cascaderItem;
   .left {
     height: 100%;
     padding: 0.3em 0;
+    overflow-y: auto;
     .label {
       padding: 0.3em 1em;
       display: flex;

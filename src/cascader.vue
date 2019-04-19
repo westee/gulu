@@ -30,6 +30,9 @@ export default {
       default: () => {
         return [];
       }
+    },
+    loadData: {
+      type: Function
     }
   },
   data() {
@@ -50,6 +53,17 @@ export default {
        * 感觉selectedArr名字取得不好，要改
        */
       this.$emit("update:selectedArr", data);
+      // let selectedItem = data[0];
+      let selectedItem = data[data.length - 1];
+      console.log(selectedItem);
+      
+      let updateSource = val => {
+        let needUpdate = this.source.filter(
+          item => item.id === selectedItem.id
+        )[0];
+        this.$set(needUpdate, "children", val);
+      };
+      this.loadData(selectedItem, updateSource);
     }
   },
   computed: {
@@ -77,7 +91,7 @@ export default {
     border-color: $border-color;
     display: flex;
     align-items: center;
-    padding: .05em 1em;
+    padding: 0.05em 1em;
     font-size: $font-size;
   }
   .popover {
