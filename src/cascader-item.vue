@@ -46,11 +46,24 @@ const cascaderItem = {
   computed: {
     //  获得下一级的数据
     getSubItem() {
-      let selected = this.selectedArr[this.selectedLevel];
-      if (selected && selected.children) {
-        return selected.children;
+      // let selected = this.selectedArr[this.selectedLevel];
+      // if (selected && selected.children) {
+      //   return selected.children;
+      // }
+      // return null;
+
+      if (this.selectedArr[this.selectedLevel]) {
+        let selected = this.items.filter(
+          item => item.name === this.selectedArr[this.selectedLevel].name
+        );
+        if (
+          selected &&
+          selected[0].children &&
+          selected[0].children.length > 0
+        ) {
+          return selected[0].children;
+        }
       }
-      return null;
     }
   },
   methods: {

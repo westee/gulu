@@ -55,13 +55,53 @@ export default {
       this.$emit("update:selectedArr", data);
       // let selectedItem = data[0];
       let selectedItem = data[data.length - 1];
-      console.log(selectedItem);
-      
-      let updateSource = val => {
-        let needUpdate = this.source.filter(
-          item => item.id === selectedItem.id
-        )[0];
-        this.$set(needUpdate, "children", val);
+      // 寻找children数组中是否包含要查找的数据
+      let simplest = (children, id) => {
+        // console.log(children.filter(item => item.id === id))
+        return children.filter(item => item.id === id)[0];
+      };
+
+      let complex = (children, id) => {
+        let hasChildren = [];
+        let noChildren = [];
+        // 按有无后代将children数据分类
+        children.forEach(item => {
+          if (item.children) {
+            hasChildren.push(item);
+          } else {
+            noChildren.push(item);
+          }
+        });
+        // 查找noCHildren中是否有目标项
+        let found = simplest(noChildren, id);
+        if (found) {
+          // console.log(found);
+          return found;
+        } else {
+          // noChildren中未查找到，则从hasChildren中查找。
+          found = simplest(hasChildren, id);
+          if (found) {
+            return found;
+          } else {
+            // noChildren中仍没有找到，则从子级中继续查找。
+            for (let i = 0; i < hasChildren.length; i++) {
+              found = complex(hasChildren[i].children, id);
+              if (found) {
+                // console.log(JSON.parse(JSON.stringify(found)));
+
+                return found;
+              }
+              return undefined;
+            }
+          }
+        }
+      };
+      // 回调函数
+      let updateSource = (result) => {
+        let deepcopy = JSON.parse(JSON.stringify(this.source));
+        let toUpdate = complex(deepcopy, selectedItem.id);
+        toUpdate.children = result;
+        this.$emit("update:source", deepcopy);
       };
       this.loadData(selectedItem, updateSource);
     }
