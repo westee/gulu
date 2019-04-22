@@ -16,6 +16,7 @@
 </template>
 <script>
 import CascaderItem from "./cascader-item";
+import { constants } from "crypto";
 export default {
   props: {
     source: {
@@ -64,6 +65,7 @@ export default {
       let complex = (children, id) => {
         let hasChildren = [];
         let noChildren = [];
+
         // 按有无后代将children数据分类
         children.forEach(item => {
           if (item.children) {
@@ -72,10 +74,15 @@ export default {
             noChildren.push(item);
           }
         });
+        console.log("children");
+        console.log(children);
+        console.log("has");
+        console.log(hasChildren);
+        console.log("no");
+        console.log(noChildren);
         // 查找noCHildren中是否有目标项
         let found = simplest(noChildren, id);
         if (found) {
-          // console.log(found);
           return found;
         } else {
           // noChildren中未查找到，则从hasChildren中查找。
@@ -87,23 +94,24 @@ export default {
             for (let i = 0; i < hasChildren.length; i++) {
               found = complex(hasChildren[i].children, id);
               if (found) {
-                // console.log(JSON.parse(JSON.stringify(found)));
-
                 return found;
               }
-              return undefined;
             }
+            return undefined;
           }
         }
       };
       // 回调函数
-      let updateSource = (result) => {
+      let updateSource = result => {
         let deepcopy = JSON.parse(JSON.stringify(this.source));
         let toUpdate = complex(deepcopy, selectedItem.id);
+        console.log("id:" + selectedItem.id);
         toUpdate.children = result;
         this.$emit("update:source", deepcopy);
       };
-      this.loadData(selectedItem, updateSource);
+      if (!selectedItem.isLeaf) {
+        this.loadData(selectedItem, updateSource);
+      }
     }
   },
   computed: {

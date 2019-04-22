@@ -4,7 +4,7 @@
     <div class="left">
       <div class="label" v-for="(item, index) in items" :key="index" @click="onClickLabel(item)">
         {{ item.name }}
-        <g-icon v-if="item.children" name="right"></g-icon>
+        <g-icon v-if="!item.isLeaf" name="right"></g-icon>
       </div>
     </div>
     <!-- 右边 -->
@@ -46,12 +46,6 @@ const cascaderItem = {
   computed: {
     //  获得下一级的数据
     getSubItem() {
-      // let selected = this.selectedArr[this.selectedLevel];
-      // if (selected && selected.children) {
-      //   return selected.children;
-      // }
-      // return null;
-
       if (this.selectedArr[this.selectedLevel]) {
         let selected = this.items.filter(
           item => item.name === this.selectedArr[this.selectedLevel].name
