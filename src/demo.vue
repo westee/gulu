@@ -1,6 +1,6 @@
 <template>
   <div>
-    <g-cascader :source.sync="sourceData" :selectedArr.sync="selectedArr" :load-data="loadData"></g-cascader>
+    <g-cascader :source.sync="sourceData" :selectedArr.sync="selectedArr" ></g-cascader>
   </div>
 </template>
 <script>
@@ -28,7 +28,46 @@ export default {
   },
   data() {
     return {
-      sourceData: [], // 源数据
+      sourceData: [
+          {
+            name: "浙江",
+            children: [
+              {
+                name: "杭州",
+                children: [{name: "上城"}, {name: "下城"}, {name: "江干"}]
+              },
+              {
+                name: "嘉兴",
+                children: [{name: "南湖"}, {name: "秀洲"}, {name: "嘉善"}]
+              }
+            ]
+          },
+          {
+            name: "福建",
+            children: [
+              {
+                name: "福州",
+                children: [{name: "鼓楼"}, {name: "台江"}, {name: "仓山"}]
+              }
+            ]
+          },
+          {
+            name: "安徽",
+            children: [
+              {
+                name: "合肥",
+                children: [
+                  {
+                    name: "瑶海"
+                  },
+                  {
+                    name: "庐阳"
+                  }
+                ]
+              }
+            ]
+          }
+        ]   , // 源数据
       height: 100,
       selectedArr: []
     };
@@ -47,13 +86,12 @@ export default {
       ajax(id).then(resolve => {
         let lastSelected = this.sourceData.filter(item => item.id === id)[0];
         this.$set(lastSelected, "children", resolve);
-        // lastSelected.children = resolve;
       });
     }
   },
   created() {
     ajax(0).then(resolve => {
-      this.sourceData = resolve;
+      // this.sourceData = resolve;
     });
   }
 };

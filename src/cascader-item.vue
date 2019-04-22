@@ -4,7 +4,7 @@
     <div class="left">
       <div class="label" v-for="(item, index) in items" :key="index" @click="onClickLabel(item)">
         {{ item.name }}
-        <g-icon v-if="!item.isLeaf" name="right"></g-icon>
+        <g-icon v-if="listArrowVisible(item)" name="right"></g-icon>
       </div>
     </div>
     <!-- 右边 -->
@@ -14,6 +14,7 @@
         :popover-height="popoverHeight"
         :selected-level="selectedLevel+1"
         :selected-arr="selectedArr"
+        :load-data="loadData"
         @update:selectedArr="onChangeSelected"
       ></cascader-item>
     </div>
@@ -38,6 +39,9 @@ const cascaderItem = {
     selectedLevel: {
       type: Number,
       default: 0
+    },
+    loadData:{
+      type: Function
     }
   },
   components: {
@@ -71,6 +75,9 @@ const cascaderItem = {
     },
     onChangeSelected(newData) {
       this.$emit("update:selectedArr", newData);
+    },
+    listArrowVisible(item){
+      return this.loadData ? !item.isLeaf : item.children
     }
   }
 };

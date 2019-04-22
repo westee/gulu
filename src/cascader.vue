@@ -9,6 +9,7 @@
         :items="source"
         :popover-height="popoverHeight"
         :selected-arr="selectedArr"
+        :load-data="loadData"
         @update:selectedArr="onSelectedArrChange"
       ></cascader-item>
     </div>
@@ -16,7 +17,6 @@
 </template>
 <script>
 import CascaderItem from "./cascader-item";
-import { constants } from "crypto";
 export default {
   props: {
     source: {
@@ -74,12 +74,6 @@ export default {
             noChildren.push(item);
           }
         });
-        console.log("children");
-        console.log(children);
-        console.log("has");
-        console.log(hasChildren);
-        console.log("no");
-        console.log(noChildren);
         // 查找noCHildren中是否有目标项
         let found = simplest(noChildren, id);
         if (found) {
@@ -105,11 +99,10 @@ export default {
       let updateSource = result => {
         let deepcopy = JSON.parse(JSON.stringify(this.source));
         let toUpdate = complex(deepcopy, selectedItem.id);
-        console.log("id:" + selectedItem.id);
         toUpdate.children = result;
         this.$emit("update:source", deepcopy);
       };
-      if (!selectedItem.isLeaf) {
+      if (this.loadData && !selectedItem.isLeaf) {
         this.loadData(selectedItem, updateSource);
       }
     }
