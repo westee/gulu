@@ -7,6 +7,7 @@
 import Button from "./button";
 import Cascader from "./cascader";
 import db from "./district.js";
+import { removeEvent } from "./click-outside.js";
 function ajax(id = 0) {
   return new Promise(function(resolve, reject) {
     let result = db.filter(item => item.parent_id == id);
@@ -54,6 +55,7 @@ export default {
     ajax(0).then(resolve => {
       this.sourceData = resolve;
     });
+    removeEvent()
   }
 };
 </script>

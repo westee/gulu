@@ -13,12 +13,9 @@
 </template>
 
 <script>
-// import Vue from 'vue'
 import Icon from "./icon"; //相对路径，不能使用'icon'
-// Vue.component('g-icon', Icon)
 
 export default {
-  // props: ['icon','iconPosition']
   name: "g-button",
   components: {
     //局部注册
