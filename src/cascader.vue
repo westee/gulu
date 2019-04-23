@@ -1,6 +1,6 @@
 <template>
-  <div class="cascader">
-    <div class="trigger" @click="popoverVisible = !popoverVisible">
+  <div class="cascader" ref="cascader">
+    <div class="trigger" @click="toggle">
       <!-- <slot></slot> -->
       {{getResult || '&nbsp;'}}
     </div>
@@ -46,6 +46,28 @@ export default {
     cascaderItem: CascaderItem
   },
   methods: {
+    onClickDocument(e) {
+      let { cascader } = this.$refs;
+      let { target } = e;
+      if(target === cascader || cascader.contains(target)){
+        return
+      }
+      this.close()
+    },
+    open() {
+      this.popoverVisible = true;
+      document.addEventListener("click", this.onClickDocument);
+    },
+    close() {
+      this.popoverVisible = false;
+    },
+    toggle() {
+      if (this.popoverVisible) {
+        this.close();
+      } else {
+        this.open();
+      }
+    },
     // cascader-item组件发来的通知，由于cascader组件的selectedArr也是props值，
     // 因此他也不能更改，继续通知上一级。
     onSelectedArrChange(data) {
