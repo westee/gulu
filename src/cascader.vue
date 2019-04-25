@@ -10,6 +10,7 @@
         :popover-height="popoverHeight"
         :selected-arr="selectedArr"
         :load-data="loadData"
+        :load-item="loadItem"
         @update:selectedArr="onSelectedArrChange"
       ></cascader-item>
     </div>
@@ -40,7 +41,8 @@ export default {
   data() {
     return {
       // 是否弹出选择栏
-      popoverVisible: false
+      popoverVisible: false,
+      loadItem: {}
     };
   },
   directives: { ClickOutside },
@@ -120,8 +122,9 @@ export default {
           }
         }
       };
-      // 回调函数
+      // 回调函数 加载完成数据后执行
       let updateSource = result => {
+        this.loadItem = {}
         let deepcopy = JSON.parse(JSON.stringify(this.source));
         let toUpdate = complex(deepcopy, selectedItem.id);
         toUpdate.children = result;
@@ -129,6 +132,7 @@ export default {
       };
       if (this.loadData && !selectedItem.isLeaf) {
         this.loadData(selectedItem, updateSource);
+        this.loadItem = selectedItem  // 用来判断loading
       }
     }
   },

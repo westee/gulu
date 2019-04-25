@@ -76,14 +76,7 @@ export default {
   &:focus {
     outline: none;
   }
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
+
   .loading {
     animation: spin 2s infinite linear;
   }

@@ -4,7 +4,14 @@
     <div class="left">
       <div class="label" v-for="(item, index) in items" :key="index" @click="onClickLabel(item)">
         {{ item.name }}
-        <g-icon v-if="listArrowVisible(item)" name="right"></g-icon>
+        <div class="icons">
+          <template v-if="item.name === loadItem.name">
+            <g-icon class="loading" name="loading"></g-icon>
+          </template>
+          <template v-else>
+            <g-icon v-if="listArrowVisible(item)" name="right"></g-icon>
+          </template>
+        </div>
       </div>
     </div>
     <!-- 右边 -->
@@ -15,6 +22,7 @@
         :selected-level="selectedLevel+1"
         :selected-arr="selectedArr"
         :load-data="loadData"
+        :load-item="loadItem"
         @update:selectedArr="onChangeSelected"
       ></cascader-item>
     </div>
@@ -40,8 +48,11 @@ const cascaderItem = {
       type: Number,
       default: 0
     },
-    loadData:{
+    loadData: {
       type: Function
+    },
+    loadItem: {
+      type: Object
     }
   },
   components: {
@@ -76,8 +87,8 @@ const cascaderItem = {
     onChangeSelected(newData) {
       this.$emit("update:selectedArr", newData);
     },
-    listArrowVisible(item){
-      return this.loadData ? !item.isLeaf : item.children
+    listArrowVisible(item) {
+      return this.loadData ? !item.isLeaf : item.children;
     }
   }
 };
@@ -102,6 +113,9 @@ export default cascaderItem;
       align-items: center;
       white-space: nowrap;
       cursor: pointer;
+      .icons .loading {
+        animation: spin 2s infinite linear;
+      }
       .icon {
         transform: scale(0.6);
         margin-left: auto;

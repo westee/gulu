@@ -11,15 +11,17 @@ import { removeEvent } from "./click-outside.js";
 function ajax(id = 0) {
   return new Promise(function(resolve, reject) {
     let result = db.filter(item => item.parent_id == id);
-    result.forEach(node => {
-      // 子元素的parent_id 存在于当前渲染项中，说明当前项有子选项。即不是叶子，叶子无下一级元素。
-      if (db.filter(item => item.parent_id === node.id).length > 0) {
-        node.isLeaf = false;
-      } else {
-        node.isLeaf = true;
-      }
-    });
-    resolve(result);
+    setTimeout(() => {
+      result.forEach(node => {
+        // 子元素的parent_id 存在于当前渲染项中，说明当前项有子选项。即不是叶子，叶子无下一级元素。
+        if (db.filter(item => item.parent_id === node.id).length > 0) {
+          node.isLeaf = false;
+        } else {
+          node.isLeaf = true;
+        }
+      });
+      resolve(result);
+    }, 1500);
   });
 }
 export default {
@@ -55,7 +57,6 @@ export default {
     ajax(0).then(resolve => {
       this.sourceData = resolve;
     });
-    removeEvent()
   }
 };
 </script>

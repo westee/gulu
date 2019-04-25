@@ -1,7 +1,6 @@
+// 判断是否关闭选择器
 let onClickDocument = (e) => {
-  let {
-    target
-  } = e
+  let { target } = e
   event.forEach(item => {
     if (item.el === target || item.el.contains(target)) {
       return
@@ -11,20 +10,13 @@ let onClickDocument = (e) => {
   });
 }
 document.addEventListener('click', onClickDocument)
-
 let event = []
 export default {
   bind(el, binding) {
-    event.push({
-      el,
-      "callback": binding.value
-    })
+    event.push({ el, "callback": binding.value })
   }
 }
-
 let removeEvent = () => {
   document.removeEventListener('click', onClickDocument)
 }
-export {
-  removeEvent
-}
+export { removeEvent }
