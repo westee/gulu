@@ -8,33 +8,45 @@ chai.use(sinonChai)
 import {
   mount
 } from "@vue/test-utils";
-import Button from "@/button.vue";
+import Popover from "@/popover.vue";
 
-describe("button.vue", () => {
+describe("popover.vue", () => {
   it('存在.', () => {
-    expect(Button).to.be.ok
+    expect(Popover).to.be.ok
   })
 
-  it("可以设置icon", () => {
-    const msg = "new message";
-    const wrapper = mount(Button, {
+  it("可以设置position", () => {
+    const wrapper = mount(Popover, {
+      slots:{
+        default: { template: '<button>点我</button>' },
+        content: '<div>弹出框</div>'
+      },
       propsData: {
-        icon: 'setting'
+        position: 'bottom'
       }
     });
-    let useElement = wrapper.find('use')
-    expect(useElement.attributes().href).to.eq('#icon-setting')
-    // expect(wrapper.props().icon).to.eq('setting')
+    wrapper.find('button').trigger('click')
+    let classes = wrapper.find('.content-wrapper').classes()
+    expect(classes).to.include('position-bottom')
   });
 
-  it('可以设置loading.', () => {
-    const wrapper = mount(Button, {
+  it('可以设置trigger.', () => {
+    const wrapper = mount(Popover, {
+      slots:{
+        default: { template: '<button>点我</button>' },
+        content: '<div>弹出框</div>'
+      },
       propsData: {
-        icon: 'loading'
+        position: 'bottom',
+        triggerType: 'hover'
       }
     });
-    let useElement = wrapper.find('use')
-    expect(useElement.attributes().href).to.eq('#icon-loading')
+    console.log(111)
+    console.log(wrapper.find('.content-wrapper'))
+    expect(wrapper.find('.content-wrapper').element).to.not.exist
+    wrapper.find('.popover').trigger('mouseenter')
+    console.log(wrapper.find('.content-wrapper'))
+    expect(wrapper.find('.content-wrapper').element).to.exist
   })
 
   xit('icon 默认的 order 是 1', () => {
@@ -64,7 +76,7 @@ describe("button.vue", () => {
     vm.$destroy()
   })
 
-  it('点击 button 触发 click 事件', () => {
+  xit('点击 button 触发 click 事件', () => {
     const wrapper = mount(Button, {
       propsData: {
         icon: 'setting',
